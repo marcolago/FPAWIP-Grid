@@ -1,0 +1,21 @@
+$micro_max:               399px;
+$small_max:               499px;
+$nomensland_max:          799px;
+$medium_max:              999px;
+$large_max:               1439px;
+
+$nomensland_min:          $small_max + 1px;
+$medium_min:              $small_max + 1px;
+$large_min:               $medium_max + 1px;
+$huge_min:                $large_max + 1px;
+
+$mq_micro_max:            #{"max-width:"} + get-em($micro-max);
+$mq_small_max:            #{"max-width:"} + get-em($small-max);
+$mq_nomensland_max:       #{"max-width:"} + get-em($nomensland_max);
+$mq_medium_max:           #{"max-width:"} + get-em($medium_max);
+$mq_large_max:            #{"max-width:"} + get-em($large_max);
+
+$mq_nomensland_min:       #{"min-width:"} + get-em($nomensland_min);
+$mq_medium_min:           #{"min-width:"} + get-em($medium_min);
+$mq_large_min:            #{"min-width:"} + get-em($large_min);
+$mq_huge_min:             #{"min-width:"} + get-em($huge_min);
