@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     watch: {
       css: {
         files: 'sass/**/*.scss',
-        tasks: ['compass', 'autoprefixer']
+        tasks: ['compass', 'postcss']
       }
     },
     compass: {
@@ -21,14 +21,14 @@ module.exports = function(grunt) {
         }
       }
     },
-    autoprefixer: {
+    postcss: {
       options: {
-        browsers: ['last 4 version', 'ie 8', 'ie 9']
+        map: false, // inline sourcemaps
+        processors: [
+          require('autoprefixer')({browsers: ['last 4 version', 'ie 8', 'ie 9']}), // add vendor prefixes
+        ]
       },
-      single_file: {
-        options: {
-          // Target-specific options go here.
-        },
+      dist: {
         src: 'css/screen.css',
         dest: 'css/screen.css'
       }
@@ -38,8 +38,8 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-postcss');
 
   // Default task
-  grunt.registerTask('default', ['compass', 'autoprefixer']);
+  grunt.registerTask('default', ['compass', 'postcss']);
 };
