@@ -3,7 +3,7 @@
 ## Future Proof Always Work In Progress Grid
 
 This repository contains the grid I’ve developed until now.
-I’me still developing the grid and I add new features and fixes every project I develop with this grid.
+I’m still developing the grid and I add new features and fixes every project I develop with this grid.
 
 You can use it, it’s solid and production ready, and if you run in any problem let me know opening an issue.
 I’ll do my best to help.
@@ -21,7 +21,7 @@ It optionally uses the ZeroSpace Font to remove white spaces between inline-bloc
 ### Use 
 
 No instructions here for now, sorry.
-I will write down instructions and some examples soon.
+I will write down instructions and some examples one day.
 
 Note that this grid is desktop-first but this does not limit you to think mobile-first while you design.
 I simply think that desktop-first in layout development still is the best approach (IMHO).
