@@ -1,9 +1,6 @@
-@import "_functions.scss";
 @import "_mq.scss";
 
-/**
- * ZeroSpace Font ©marcolago 2014
- */
+/* ZERO-SPACE FONT HACK ©marcolago 2014 */
 
 $f_body_stack:            sans-serif !default;
 $use_zerospacefont:       true !default;
@@ -19,7 +16,10 @@ $gutter_width:            get-rem($gutter_width_px) !default;
 
 $margin-between-rows:     #{$line-height + 'em'};
 
-// set $use_zerospacefont to true to use Zero-Space Font for removing white space between inline-block elements
+$expand_push:             false !default;
+$expand_pull:             false !default;
+
+/* set $use_zerospacefont to true to use Zero-Space Font for removing white space between inline-block elements */
 @if ($use_zerospacefont == true) {
 
   @font-face {
@@ -59,15 +59,7 @@ $margin-between-rows:     #{$line-height + 'em'};
   display: inline-block;
 }
 
-/*
- ######   ########  #### ########  
-##    ##  ##     ##  ##  ##     ## 
-##        ##     ##  ##  ##     ## 
-##   #### ########   ##  ##     ## 
-##    ##  ##   ##    ##  ##     ## 
-##    ##  ##    ##   ##  ##     ## 
- ######   ##     ## #### ########  
-*/
+/* GRID */
 
 .grid,
 .grid__item,
@@ -101,7 +93,7 @@ $margin-between-rows:     #{$line-height + 'em'};
   }
 }
 
-.grid.vertical-centered {
+.grid.vertical-center {
   align-items: center;
 }
 
@@ -129,8 +121,11 @@ $margin-between-rows:     #{$line-height + 'em'};
   padding-left: $gutter_width;
   vertical-align: top;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
   flex-grow: 0;
   flex-shrink: 1;
+  align-content: flex-start;
 
   .vertical-centered > & {
     vertical-align: middle;
@@ -147,24 +142,28 @@ $margin-between-rows:     #{$line-height + 'em'};
   .gutterless > & {
     padding-left: 0;
   }
+
+  &.autosize {
+    width: auto;
+  }
 }
 
 .grid__box {
   width: 100%;
   margin: 0;
-  margin-bottom: $margin-between-rows;
+  margin-top: $margin-between-rows;
   padding: 0;
   position: relative;
 }
 
 /*
- ######  #### ######## ########  ######     ##     ## #### ##     ## #### ##    ## 
-##    ##  ##       ##  ##       ##    ##    ###   ###  ##   ##   ##   ##  ###   ## 
-##        ##      ##   ##       ##          #### ####  ##    ## ##    ##  ####  ## 
- ######   ##     ##    ######    ######     ## ### ##  ##     ###     ##  ## ## ## 
-      ##  ##    ##     ##             ##    ##     ##  ##    ## ##    ##  ##  #### 
-##    ##  ##   ##      ##       ##    ##    ##     ##  ##   ##   ##   ##  ##   ### 
- ######  #### ######## ########  ######     ##     ## #### ##     ## #### ##    ## 
+##     ##    ###    ##     ##
+###   ###   ## ##    ##   ##
+#### ####  ##   ##    ## ##
+## ### ## ##     ##    ###
+##     ## #########   ## ##
+##     ## ##     ##  ##   ##
+##     ## ##     ## ##     ##
 */
 
 @mixin sizes($size_class) {
@@ -276,13 +275,13 @@ $margin-between-rows:     #{$line-height + 'em'};
 }
 
 /*
- ######  #### ######## ########  ######     ##     ## #### ##    ##    ##     ## #### ##     ## #### ##    ## 
-##    ##  ##       ##  ##       ##    ##    ###   ###  ##  ###   ##    ###   ###  ##   ##   ##   ##  ###   ## 
-##        ##      ##   ##       ##          #### ####  ##  ####  ##    #### ####  ##    ## ##    ##  ####  ## 
- ######   ##     ##    ######    ######     ## ### ##  ##  ## ## ##    ## ### ##  ##     ###     ##  ## ## ## 
-      ##  ##    ##     ##             ##    ##     ##  ##  ##  ####    ##     ##  ##    ## ##    ##  ##  #### 
-##    ##  ##   ##      ##       ##    ##    ##     ##  ##  ##   ###    ##     ##  ##   ##   ##   ##  ##   ### 
- ######  #### ######## ########  ######     ##     ## #### ##    ##    ##     ## #### ##     ## #### ##    ## 
+##     ## #### ##    ## 
+###   ###  ##  ###   ## 
+#### ####  ##  ####  ## 
+## ### ##  ##  ## ## ## 
+##     ##  ##  ##  #### 
+##     ##  ##  ##   ### 
+##     ## #### ##    ## 
 */
 
 @mixin sizes-min($size_class) {
@@ -429,10 +428,7 @@ $margin-between-rows:     #{$line-height + 'em'};
 
 }
 
-/**
- * Include the sizes with namespaced classes for IE8-
- * and browsers without media queries support
- */
+// @include sizes("all");
 
 .no-opacity,
 .lte-ie-8 {
@@ -573,6 +569,135 @@ $margin-between-rows:     #{$line-height + 'em'};
   left: get-percent(11,13);
 }
 
+@mixin push-sizes($size_class) {
+
+  .push-#{$size_class}--1-12 {
+    left: get-percent(1,12);
+  }
+
+  .push-#{$size_class}--2-12,
+  .push-#{$size_class}--1-6 {
+    left: get-percent(2,12);
+  }
+
+  .push-#{$size_class}--3-12,
+  .push-#{$size_class}push--1-4 {
+    left: get-percent(3,12);
+  }
+
+  .push-#{$size_class}--4-12,
+  .push-#{$size_class}--2-6,
+  .push-#{$size_class}--1-3 {
+    left: get-percent(4,12);
+  }
+
+  .push-#{$size_class}--5-12 {
+    left: get-percent(5,12);
+  }
+
+  .push-#{$size_class}--6-12,push
+  .push-#{$size_class}--3-6,
+  .push-#{$size_class}--2-4,
+  .push-#{$size_class}--1-2 {
+    left: get-percent(6,12);
+  }
+
+  .push-#{$size_class}--7-12 {
+    left: get-percent(7,12);
+  }
+
+  .push-#{$size_class}--8-12,
+  .push-#{$size_class}--2-3 {
+    left: get-percent(8,12);
+  }
+
+  .push-#{$size_class}--9-12,left
+  .push-#{$size_class}--3-4 {
+    left: get-percent(9,12);
+  }
+
+  .push-#{$size_class}--10-12,
+  .push-#{$size_class}--5-6 {
+    left: get-percent(10,12);
+  }
+
+  .push-#{$size_class}--11-12 {
+    left: get-percent(11,12);
+  }
+
+  // golden ratio
+
+  // eights
+
+  .push-#{$size_class}--3-8 {
+    left: get-percent(3,8);
+  }
+
+  .push-#{$size_class}--5-8 {
+    left: get-percent(5,8);
+  }
+
+  // elevenths
+
+  .push-#{$size_class}--3-11 {
+    left: get-percent(3,11);
+  }
+
+  .push-#{$size_class}--5-11 {
+    left: get-percent(5,11);
+  }
+
+  .push-#{$size_class}--8-11 {
+    left: get-percent(8,11);
+  }
+
+  // thirteenths
+
+  .push-#{$size_class}--3-13 {
+    left: get-percent(3,13);
+  }
+
+  .push-#{$size_class}--5-13 {
+    left: get-percent(5,13);
+  }
+
+  .push-#{$size_class}--8-13 {
+    left: get-percent(8,13);
+  }
+
+  .push-#{$size_class}--11-13 {
+    left: get-percent(11,13);
+  }
+
+}
+
+@if ($expand_push == true) {
+  .no-opacity,
+  .lte-ie-8 {
+    @include push-sizes("large");
+  }
+
+  @media screen and ($mq_large_min) {
+    @include push-sizes("large");
+  }
+
+  @media screen and ($mq_medium_max) and ($mq_medium_min) {
+    @include push-sizes("medium");
+  }
+
+  @media screen and ($mq_nomensland_max) and ($mq_nomensland_min) {
+    @include push-sizes("nml");
+  }
+
+  @media screen and ($mq_small_max) {
+    @include push-sizes("small");
+  }
+
+  @media screen and ($mq_micro_max) {
+    @include push-sizes("micro");
+  }
+}
+
 /*
 ########  ##     ## ##       ##       
 ##     ## ##     ## ##       ##       
@@ -681,27 +806,146 @@ $margin-between-rows:     #{$line-height + 'em'};
   right: get-percent(11,13);
 }
 
-/*
- ######  ######## ########     #######  ########
-##    ## ##          ##       ##     ## ##      
-##       ##          ##       ##     ## ##      
- ######  ######      ##       ##     ## ######  
-      ## ##          ##       ##     ## ##      
-##    ## ##          ##       ##     ## ##      
- ######  ########    ##        #######  ##      
-*/
+@mixin pull-sizes($size_class) {
+  
+  .pull-#{$size_class}--1-12 {
+    right: get-percent(1,12);
+  }
 
-/* FLEXBOX ONLY */
+  .pull-#{$size_class}--2-12,
+  .pull-#{$size_class}--1-6 {
+    right: get-percent(2,12);
+  }
 
-.set-of-11 > .grid__item:nth-child(1n+12),
-.set-of-10 > .grid__item:nth-child(1n+11),
-.set-of-9 > .grid__item:nth-child(1n+10),
-.set-of-8 > .grid__item:nth-child(1n+9),
-.set-of-7 > .grid__item:nth-child(1n+8),
-.set-of-6 > .grid__item:nth-child(1n+7),
-.set-of-5 > .grid__item:nth-child(1n+6),
-.set-of-4 > .grid__item:nth-child(1n+5),
-.set-of-3 > .grid__item:nth-child(1n+4),
-.set-of-2 > .grid__item:nth-child(1n+3) {
+  .pull-#{$size_class}--3-12,
+  .pull-#{$size_class}--1-4 {
+    right: get-percent(3,12);
+  }
+
+  .pull-#{$size_class}--4-12,
+  .pull-#{$size_class}--2-6,
+  .pull-#{$size_class}--1-3 {
+    right: get-percent(4,12);
+  }
+
+  .pull-#{$size_class}--5-12 {
+    right: get-percent(5,12);
+  }
+
+  .pull-#{$size_class}--6-12,pull
+  .pull-#{$size_class}--3-6,
+  .pull-#{$size_class}--2-4,
+  .pull-#{$size_class}--1-2 {
+    right: get-percent(6,12);
+  }
+
+  .pull-#{$size_class}--7-12 {
+    right: get-percent(7,12);
+  }
+
+  .pull-#{$size_class}--8-12,
+  .pull-#{$size_class}--2-3 {
+    right: get-percent(8,12);
+  }
+
+  .pull-#{$size_class}--9-12,left
+  .pull-#{$size_class}--3-4 {
+    right: get-percent(9,12);
+  }
+
+  .pull-#{$size_class}--10-12,
+  .pull-#{$size_class}--5-6 {
+    right: get-percent(10,12);
+  }
+
+  .pull-#{$size_class}--11-12 {
+    right: get-percent(11,12);
+  }
+
+  // golden ratio
+
+  // eights
+
+  .pull-#{$size_class}--3-8 {
+    right: get-percent(3,8);
+  }
+
+  .pull-#{$size_class}--5-8 {
+    right: get-percent(5,8);
+  }
+
+  // elevenths
+
+  .pull-#{$size_class}--3-11 {
+    right: get-percent(3,11);
+  }
+
+  .pull-#{$size_class}--5-11 {
+    right: get-percent(5,11);
+  }
+
+  .pull-#{$size_class}--8-11 {
+    right: get-percent(8,11);
+  }
+
+  // thirteenths
+
+  .pull-#{$size_class}--3-13 {
+    right: get-percent(3,13);
+  }
+
+  .pull-#{$size_class}--5-13 {
+    right: get-percent(5,13);
+  }
+
+  .pull-#{$size_class}--8-13 {
+    right: get-percent(8,13);
+  }
+
+  .pull-#{$size_class}--11-13 {
+    right: get-percent(11,13);
+  }
+}
+
+
+@if ($expand_pull == true) {
+  .no-opacity,
+  .lte-ie-8 {
+    @include pull-sizes("large");
+  }
+
+  @media screen and ($mq_large_min) {
+    @include pull-sizes("large");
+  }
+
+  @media screen and ($mq_medium_max) and ($mq_medium_min) {
+    @include pull-sizes("medium");
+  }
+
+  @media screen and ($mq_nomensland_max) and ($mq_nomensland_min) {
+    @include pull-sizes("nml");
+  }
+
+  @media screen and ($mq_small_max) {
+    @include pull-sizes("small");
+  }
+
+  @media screen and ($mq_micro_max) {
+    @include pull-sizes("micro");
+  }
+}
+
+// Flexbox only
+
+.set-of-11  > .grid__item:nth-child(1n+12),
+.set-of-10  > .grid__item:nth-child(1n+11),
+.set-of-9   > .grid__item:nth-child(1n+10),
+.set-of-8   > .grid__item:nth-child(1n+9),
+.set-of-7   > .grid__item:nth-child(1n+8),
+.set-of-6   > .grid__item:nth-child(1n+7),
+.set-of-5   > .grid__item:nth-child(1n+6),
+.set-of-4   > .grid__item:nth-child(1n+5),
+.set-of-3   > .grid__item:nth-child(1n+4),
+.set-of-2   > .grid__item:nth-child(1n+3) {
   flex-grow: 0;
 }

@@ -1,0 +1,33 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-wrapper {
+  max-width: 1400px;
+  margin: 2em auto;
+  background-color: rgba(black, 0.1);
+  box-sizing: border-box;
+  outline: 1px solid red;
+
+  &.padded {
+    padding: 0 ($line-height * 1em);
+    padding-top: $line-height * 1em;
+  }
+
+  &.marginless {
+    margin: 0 auto;
+  }
+}
+
+.grid {
+  background-color: rgba(lime, 0.5);
+}
+
+.grid__item {
+  background-color: rgba(pink, 0.5);
+}
+
+.grid__box {
+  background-color: rgba(yellow, 0.5);
+}
