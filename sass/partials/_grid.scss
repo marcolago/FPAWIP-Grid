@@ -20,7 +20,9 @@ $gap_between_rows:        #{$line-height + 'em'};
 
 $expand_push:             false !default;
 $expand_pull:             false !default;
-$use_sizes_min:           false !default;
+$use_sizes_min:           true !default;
+
+$use_symmetric_gutters:   false !default; // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
 
 /* set $use_zerospacefont to true to use Zero-Space Font for removing white space between inline-block elements */
 @if ($use_zerospacefont == true) {
@@ -74,17 +76,33 @@ $use_sizes_min:           false !default;
   z-index: 0;
 }
 
+.grid-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .grid {
+  // remember to not set left and right padding on .grid parent
+  // if you want to be sure use .grid-wrapper class on .grid parent
+  // but pay attention to the !important override
   @extend .zsf-parent;
 
   @if ($has_row_gap == true) {
     padding-bottom: $gap_between_rows; // Used padding to allow background symmetry
   }
 
-  margin-left:  -$gutter_width_px * 0.5px;
-  margin-left:  calc(-$gutter_width * 0.5rem);
-  margin-right: -$gutter_width_px * 0.5px;
-  margin-right: calc(-$gutter_width * 0.5rem);
+  @if ($use_symmetric_gutters == true) {
+    margin-left:  -$gutter_width_px * 0.5px;
+    margin-left:  calc(-$gutter_width * 0.5rem);
+    margin-right: -$gutter_width_px * 0.5px;
+    margin-right: calc(-$gutter_width * 0.5rem);
+  }
+
+  @if ($use_symmetric_gutters == false) {
+    margin-left:  -$gutter_width_px * 1px;
+    margin-left:  calc(-$gutter_width * 1rem);
+  }
+  
   display: flex;
   flex-wrap: wrap;
 
@@ -96,6 +114,13 @@ $use_sizes_min:           false !default;
   &.gutterless {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  &.symmetric-gutters {
+    margin-left:  -$gutter_width_px * 0.5px;
+    margin-left:  calc(-$gutter_width * 0.5rem);
+    margin-right: -$gutter_width_px * 0.5px;
+    margin-right: calc(-$gutter_width * 0.5rem);
   }
 
   &.rowgapless {
@@ -147,10 +172,18 @@ $use_sizes_min:           false !default;
     margin-top: $gap_between_rows;  
   }
 
-  padding-left:  $gutter_width_px * 0.5px;
-  padding-left:  calc($gutter_width * 0.5rem);
-  padding-right: $gutter_width_px * 0.5px;
-  padding-right: calc($gutter_width * 0.5rem);
+  @if ($use_symmetric_gutters == true) {
+    padding-left:  $gutter_width_px * 0.5px;
+    padding-left:  calc($gutter_width * 0.5rem);
+    padding-right: $gutter_width_px * 0.5px;
+    padding-right: calc($gutter_width * 0.5rem);
+  }
+
+  @if ($use_symmetric_gutters == false) {
+    padding-left:  $gutter_width_px * 1px;
+    padding-left:  calc($gutter_width * 1rem);
+  }
+
   vertical-align: top;
   position: relative;
   display: flex;
@@ -173,6 +206,13 @@ $use_sizes_min:           false !default;
   .gutterless > & {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .symmetric-gutters > & {
+    padding-left:  $gutter_width_px * 0.5px;
+    padding-left:  calc($gutter_width * 0.5rem);
+    padding-right: $gutter_width_px * 0.5px;
+    padding-right: calc($gutter_width * 0.5rem);
   }
 
   &.autosize {

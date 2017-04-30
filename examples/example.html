@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>FPAWIP Grid Usage Examples</title>
   <link rel="stylesheet" type="text/css" href="../css/screen.css">
   <style>
   </style>
@@ -10,6 +10,7 @@
 <body>
 
   <div class="legend">
+    <h1>FPAWIP Grid Usage Examples</h1>
     <span class="legend--grid">.grid
       <span class="legend--grid__item">.grid__item
         <span class="legend--grid__box">.grid__box</span>
@@ -71,6 +72,35 @@
   <div class="wrapper">
     <h3>both .gutterless and .rowgapless</h3>
     <div class="grid gutterless rowgapless">
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-2 medium--1-2 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-2 medium--1-2 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--3-11 medium--3-8 nml--1-3"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--8-11 medium--5-8 nml--2-3"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--full"><div class="grid__box">grid__item with a grid__box</div></div>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <h3>Optional --min Versions On .grid__item Sizes (Flexbox Only)</h3>
+    <div class="grid">
+      <div class="grid__item large--1-3--min medium--1-3--min nml--1-2-min"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3--min medium--1-3--min nml--1-2-min"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3--min medium--1-3--min nml--1-2-min"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-2--min medium--1-2--min nml--1-2-min"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-2--min medium--1-2--min nml--1-2-min"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-2--min medium--1-2--min nml--1-2-min"><div class="grid__box">grid__item with a grid__box</div></div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <h3>Forced Symmetric Gutters</h3>
+    <div class="grid symmetric-gutters">
       <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
       <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
       <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
