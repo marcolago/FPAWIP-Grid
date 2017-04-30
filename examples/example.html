@@ -9,107 +9,61 @@
 </head>
 <body>
 
-  <div class="custom-wrapper">
-    <p>The custom wrapper lets you setting the width of the content.<br>
-    The grid will occupy the full width of the wrapper.</p>
-    <p>If you need to colour the background of the grid container (the wrapper) and you want the grid vertically centered you have to mind the margin of the inner grid elements setting the extra padding to the top of the wrapper.</p>
-    <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
+  <div class="legend">
+    <span class="legend--grid">.grid
+      <span class="legend--grid__item">.grid__item
+        <span class="legend--grid__box">.grid__box</span>
+      </span>
+    </span>
   </div>
-  <div class="custom-wrapper">
+
+  <div class="wrapper">
+    <h3>Default</h3>
     <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
-  </div>
-  <div class="custom-wrapper">
-    <div class="grid rowgutterless">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
     </div>
   </div>
 
-  <div class="custom-wrapper">
-    <div class="grid">
-      <div class="grid__item large--1-3">
-        <div class="grid">
-          <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-          <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-          <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-          <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-          <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-          <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-        </div>
-      </div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
+  <div class="wrapper">
+    <h3>.gutterless</h3>
+    <div class="grid gutterless">
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <h3>.rowgapless</h3>
+    <div class="grid rowgapless">
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <h3>both .gutterless and .rowgapless</h3>
+    <div class="grid gutterless rowgapless">
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
+      <div class="grid__item large--1-3 medium--1-3 nml--1-2"><div class="grid__box">grid__item with a grid__box</div></div>
     </div>
   </div>
 
-  <div class="custom-wrapper padded">
-    <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
-  </div>
-  <div class="custom-wrapper marginless">
-    <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
-    <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
-  </div>
-  <div class="custom-wrapper marginless">
-    <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
-  </div>
-  <div class="custom-wrapper marginless">
-    <div class="grid">
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-      <div class="grid__item large--1-3"><div class="grid__box">grid__item</div></div>
-    </div>
-  </div>
 </body>
 </html>

@@ -15,8 +15,8 @@ $line-height:             1.39 !default;
 $gutter_width_px:         22px !default;
 $gutter_width:            get-rem($gutter_width_px) !default;
 
-$margin_between_rows:     #{$line-height + 'em'};
-$margin_rows:             true !default;
+$has_row_gap:             true !default;
+$gap_between_rows:        #{$line-height + 'em'};
 
 $expand_push:             false !default;
 $expand_pull:             false !default;
@@ -77,8 +77,8 @@ $use_sizes_min:           false !default;
 .grid {
   @extend .zsf-parent;
 
-  @if ($margin_rows == true) {
-    padding-bottom: $margin_between_rows;
+  @if ($has_row_gap == true) {
+    padding-bottom: $gap_between_rows; // Used padding to allow background symmetry
   }
 
   margin-left: -$gutter_width_px;
@@ -95,12 +95,12 @@ $use_sizes_min:           false !default;
     margin-left: 0;
   }
 
-  &.rowgutterless {
+  &.rowgapless {
     padding-bottom: 0;
   }
 
-  &.rowgutter {
-    padding-bottom: $margin_between_rows;
+  &.rowgap {
+    padding-bottom: $gap_between_rows;
   }
 
   & > .grid {
@@ -109,8 +109,8 @@ $use_sizes_min:           false !default;
   }
 
   & .grid {
-    @if ($margin_rows == true) {
-      margin-top: -$margin_between_rows;
+    @if ($has_row_gap == true) {
+      margin-top: -$gap_between_rows;
     }
   }
 }
@@ -140,8 +140,8 @@ $use_sizes_min:           false !default;
   text-align: left;
   width: 100%;
 
-  @if ($margin_rows == true) {
-    margin-top: $margin_between_rows;  
+  @if ($has_row_gap == true) {
+    margin-top: $gap_between_rows;  
   }
 
   padding-left: $gutter_width_px;
@@ -173,19 +173,18 @@ $use_sizes_min:           false !default;
     width: auto;
   }
 
-  .rowgutterless > & {
+  .rowgapless > & {
     margin-top: 0;
   }
 
-  .rowgutter > & {
-    margin-top: $margin_between_rows;
+  .rowgap > & {
+    margin-top: $gap_between_rows; // force the row gap even if the grid is rowgapless
   }
 }
 
 .grid__box {
   width: 100%;
   margin: 0;
-  // margin-top: $margin-between-rows;
   padding: 0;
   position: relative;
 }
@@ -475,7 +474,8 @@ $use_sizes_min:           false !default;
 @media screen and ($mq_large_min) {
   @include sizes("large");
   @if ($use_sizes_min == true) {
-  @include sizes-min("large");
+    @include sizes-min("large");
+  }
 }
 
 @media screen and ($mq_medium_max) and ($mq_medium_min) {
@@ -980,7 +980,7 @@ $use_sizes_min:           false !default;
   }
 }
 
-// non è che mi ricordi bene bene perché ho fatto questo, ma di certo mi è servito una volta :P
+// 
 
 .set-of-11  > .grid__item:nth-child(1n+12),
 .set-of-10  > .grid__item:nth-child(1n+11),
