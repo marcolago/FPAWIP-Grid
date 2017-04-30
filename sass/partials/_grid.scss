@@ -141,8 +141,8 @@ $define_micro_classes:    false !default;
   }
 
   & > .grid {
-
     margin-left: 0;
+    margin-right: 0;
   }
 
   & .grid {
@@ -150,6 +150,14 @@ $define_micro_classes:    false !default;
       margin-top: -$gap_between_rows;
     }
   }
+}
+
+.grid .rowgapless {
+  margin-top: 0;
+}
+
+.rowgapless .rowgapless {
+  margin-top: 0;
 }
 
 .grid.vertical-middle {
