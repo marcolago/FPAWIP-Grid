@@ -17,13 +17,21 @@ $gutter_width_px:         $gutter_width_px_value * 1px !default; // for retro-co
 $gutter_width:            get-rem($gutter_width_px) !default;
 
 $has_row_gap:             true !default;
-$gap_between_rows:        #{$line-height + 'em'};
+$gap_between_rows:        $line-height * 1em;
 
 $expand_push:             false !default;
 $expand_pull:             false !default;
 $use_sizes_min:           true !default;
 
 $use_symmetric_gutters:   false !default; // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
+
+$large_label:             "large" !default;
+$medium_label:            "medium" !default;
+$nomensland_label:        "nml" !default;
+$small_label:             "small" !default;
+$micro_label:             "micro" !default;
+
+$define_micro_classes:    false !default;
 
 /* set $use_zerospacefont to true to use Zero-Space Font for removing white space between inline-block elements */
 @if ($use_zerospacefont == true) {
@@ -512,44 +520,46 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
 
 .no-opacity,
 .lte-ie-8 {
-  @include sizes("large");
+  @include sizes($large_label);
   @if ($use_sizes_min == true) {
-    @include sizes-min("large");
+    @include sizes-min($large_label);
   }
 }
 
 @media screen and ($mq_large_min) {
-  @include sizes("large");
+  @include sizes($large_label);
   @if ($use_sizes_min == true) {
-    @include sizes-min("large");
+    @include sizes-min($large_label);
   }
 }
 
 @media screen and ($mq_medium_max) and ($mq_medium_min) {
-  @include sizes("medium");
+  @include sizes($medium_label);
   @if ($use_sizes_min == true) {
-    @include sizes-min("medium");
+    @include sizes-min($medium_label);
   }
 }
 
 @media screen and ($mq_nomensland_max) and ($mq_nomensland_min) {
-  @include sizes("nml");
+  @include sizes($nomensland_label);
   @if ($use_sizes_min == true) {
-    @include sizes-min("nml");
+    @include sizes-min($nomensland_label);
   }
 }
 
 @media screen and ($mq_small_max) {
-  @include sizes("small");
+  @include sizes($small_label);
   @if ($use_sizes_min == true) {
-    @include sizes-min("small");
+    @include sizes-min($small_label);
   }
 }
 
-@media screen and ($mq_micro_max) {
-  @include sizes("micro");
-  @if ($use_sizes_min == true) {
-    @include sizes-min("micro");
+@if ($define_micro_classes) {
+  @media screen and ($mq_micro_max) {
+    @include sizes($micro_label);
+    @if ($use_sizes_min == true) {
+      @include sizes-min($micro_label);
+    }
   }
 }
 
