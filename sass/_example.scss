@@ -1,7 +1,7 @@
-$c_palette_1: #69D2E7;
-$c_palette_2: #A7DBD8;
-$c_palette_3: #E0E4CC;
-$c_palette_4: #F38630;
+$c_palette_1: #9cdaf4;
+$c_palette_2: #eef5db;
+$c_palette_3: #f35f55;
+$c_palette_4: #69D2E7;
 $c_palette_5: #4c5864;
 
 html, body {
@@ -79,7 +79,7 @@ h3 {
     top: 0;
     bottom: 0;
     z-index: 10;
-    border-left: 1px dashed rgba($c_palette_5, 0.5);
+    border-left: 1px dashed rgba(#f35f55, 0.5);
   }
 
   &:before {
@@ -88,8 +88,8 @@ h3 {
     font-style: italic;
     line-height: 1.5;
     white-space: nowrap;
-    color: #cccccc;
-    padding: 0 0.5em;
+    color: $c_palette_3;
+    padding: 0.25em 0.5em;
   }
 
   &:after {
