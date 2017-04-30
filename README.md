@@ -25,5 +25,6 @@ I will write down instructions one day. I promise!
 
 **But you could check the example page to look at the code and the effects.**
 
-Note that this grid is desktop-first but this does not limit you to think mobile-first while you design.
-I simply think that desktop-first in layout development still is the best approach (IMHO).
+The grid is neither desktop-first nor mobile-first.
+Every size class works only for the specifed breakpoint.
+Feel free to develop as you prefer, but mind that if you want to support IE8 (and other browsers with no responsive support) you should ever set the `large--` classes to define the layout (requires a `.no-opacity` or `.lte-ie-8` class on a root parent).
