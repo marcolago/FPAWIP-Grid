@@ -7,12 +7,12 @@ $f_body_stack:            sans-serif !default;
 $use_zerospacefont:       true !default;
 $use_font-size-0:         false !default;
 
-$font-size_px:            16px !default;
+$font-size_px:            16 !default;
 $font-size:               get-rem($font-size_px) !default;
 
 $line-height:             1.39 !default;
 
-$gutter_width_px:         22px !default;
+$gutter_width_px:         22 !default;
 $gutter_width:            get-rem($gutter_width_px) !default;
 
 $has_row_gap:             true !default;
@@ -56,8 +56,8 @@ $use_sizes_min:           false !default;
   /* reset font-face and font-size as you need */
   font-family: $f_body_stack;
   @if ($use_font-size-0 == true) {
-    font-size: $font-size_px;
-    font-size: 1rem;
+    font-size: $font-size_px * 1px;
+    font-size: $font-size;
   }
   display: inline-block;
 }
@@ -81,8 +81,10 @@ $use_sizes_min:           false !default;
     padding-bottom: $gap_between_rows; // Used padding to allow background symmetry
   }
 
-  margin-left: -$gutter_width_px;
-  margin-left: -$gutter_width;
+  margin-left:  -$gutter_width_px * 0.5px;
+  margin-left:  calc(-$gutter_width * 0.5rem);
+  margin-right: -$gutter_width_px * 0.5px;
+  margin-right: calc(-$gutter_width * 0.5rem);
   display: flex;
   flex-wrap: wrap;
 
@@ -93,6 +95,7 @@ $use_sizes_min:           false !default;
 
   &.gutterless {
     margin-left: 0;
+    margin-right: 0;
   }
 
   &.rowgapless {
@@ -144,8 +147,10 @@ $use_sizes_min:           false !default;
     margin-top: $gap_between_rows;  
   }
 
-  padding-left: $gutter_width_px;
-  padding-left: $gutter_width;
+  padding-left:  $gutter_width_px * 0.5px;
+  padding-left:  calc($gutter_width * 0.5rem);
+  padding-right: $gutter_width_px * 0.5px;
+  padding-right: calc($gutter_width * 0.5rem);
   vertical-align: top;
   position: relative;
   display: flex;
@@ -167,6 +172,7 @@ $use_sizes_min:           false !default;
 
   .gutterless > & {
     padding-left: 0;
+    padding-right: 0;
   }
 
   &.autosize {
