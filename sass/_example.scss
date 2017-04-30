@@ -29,7 +29,7 @@ html, body {
 h3 {
   text-align: center;
   font-weight: normal;
-  margin: -1rem 0 1rem 0;
+  margin: 0 0 1rem 0;
   padding: 0 2em;
 }
 
@@ -94,15 +94,6 @@ h3 {
 
   &:after {
     right: 0;
-  }
-
-  &.padded {
-    padding: 0 ($line-height * 1em);
-    padding-top: $line-height * 1em;
-  }
-
-  &.no-margins {
-    margin: 0 auto;
   }
 }
 
