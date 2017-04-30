@@ -12,7 +12,8 @@ $font-size:               get-rem($font-size_px) !default;
 
 $line-height:             1.39 !default;
 
-$gutter_width_px:         22 !default;
+$gutter_width_px_value:   22 !default;
+$gutter_width_px:         $gutter_width_px_value * 1px !default; // for retro-compatibility issue
 $gutter_width:            get-rem($gutter_width_px) !default;
 
 $has_row_gap:             true !default;
@@ -92,15 +93,15 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
   }
 
   @if ($use_symmetric_gutters == true) {
-    margin-left:  -$gutter_width_px * 0.5px;
-    margin-left:  calc(-$gutter_width * 0.5rem);
-    margin-right: -$gutter_width_px * 0.5px;
-    margin-right: calc(-$gutter_width * 0.5rem);
+    margin-left:  -$gutter_width_px_value * 0.5px;
+    margin-left:  calc(-$gutter_width * 0.5);
+    margin-right: -$gutter_width_px_value * 0.5px;
+    margin-right: calc(-$gutter_width * 0.5);
   }
 
   @if ($use_symmetric_gutters == false) {
-    margin-left:  -$gutter_width_px * 1px;
-    margin-left:  calc(-$gutter_width * 1rem);
+    margin-left:  -$gutter_width_px_value * 1px;
+    margin-left:  -$gutter_width;
   }
   
   display: flex;
@@ -117,10 +118,10 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
   }
 
   &.symmetric-gutters {
-    margin-left:  -$gutter_width_px * 0.5px;
-    margin-left:  calc(-$gutter_width * 0.5rem);
-    margin-right: -$gutter_width_px * 0.5px;
-    margin-right: calc(-$gutter_width * 0.5rem);
+    margin-left:  -$gutter_width_px_value * 0.5px;
+    margin-left:  calc(-$gutter_width * 0.5);
+    margin-right: -$gutter_width_px_value * 0.5px;
+    margin-right: calc(-$gutter_width * 0.5);
   }
 
   &.rowgapless {
@@ -173,15 +174,15 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
   }
 
   @if ($use_symmetric_gutters == true) {
-    padding-left:  $gutter_width_px * 0.5px;
-    padding-left:  calc($gutter_width * 0.5rem);
-    padding-right: $gutter_width_px * 0.5px;
-    padding-right: calc($gutter_width * 0.5rem);
+    padding-left:  $gutter_width_px_value * 0.5px;
+    padding-left:  calc(#{$gutter_width} * 0.5);
+    padding-right: $gutter_width_px_value * 0.5px;
+    padding-right: calc(#{$gutter_width} * 0.5);
   }
 
   @if ($use_symmetric_gutters == false) {
-    padding-left:  $gutter_width_px * 1px;
-    padding-left:  calc($gutter_width * 1rem);
+    padding-left:  $gutter_width_px_value * 1px;
+    padding-left:  $gutter_width;
   }
 
   vertical-align: top;
@@ -209,10 +210,10 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
   }
 
   .symmetric-gutters > & {
-    padding-left:  $gutter_width_px * 0.5px;
-    padding-left:  calc($gutter_width * 0.5rem);
-    padding-right: $gutter_width_px * 0.5px;
-    padding-right: calc($gutter_width * 0.5rem);
+    padding-left:  $gutter_width_px_value * 0.5px;
+    padding-left:  calc(#{$gutter_width} * 0.5);
+    padding-right: $gutter_width_px_value * 0.5px;
+    padding-right: calc(#{$gutter_width} * 0.5);
   }
 
   &.autosize {
