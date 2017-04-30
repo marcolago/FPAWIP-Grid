@@ -20,8 +20,8 @@ It optionally uses the ZeroSpace Font to remove white spaces between inline-bloc
 
 ### Use 
 
-No instructions here for now, sorry.
-I will write down instructions one day. I promise!
+No REAL instructions here for now, sorry.
+I will write down full instructions one day. I promise!
 
 **But you could check the example page to look at the code and the effects.**
 

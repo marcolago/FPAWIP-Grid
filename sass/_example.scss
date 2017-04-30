@@ -6,6 +6,7 @@ $c_palette_5: #4c5864;
 
 html, body {
   font-family: sans-serif;
+  line-height: 1.68;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -32,7 +33,6 @@ h3 {
 }
 
 .legend {
-  text-align: center;
   width: 90%;
   max-width: 1400px;
   margin: 2em auto 2em;
