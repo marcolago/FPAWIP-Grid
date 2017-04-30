@@ -21,7 +21,9 @@ It optionally uses the ZeroSpace Font to remove white spaces between inline-bloc
 ### Use 
 
 No instructions here for now, sorry.
-I will write down instructions and some examples one day.
+I will write down instructions one day. I promise!
+
+**But you could check the example page to look at the code and the effects.**
 
 Note that this grid is desktop-first but this does not limit you to think mobile-first while you design.
 I simply think that desktop-first in layout development still is the best approach (IMHO).
