@@ -1,9 +1,9 @@
-$c_palette_1:  #FACDC8;
+$c_palette_1:  #ffcc00;
 $c_palette_1b: #cc0000;
-$c_palette_2:  #A5CAD3;
-$c_palette_3:  #80A6AF;
-$c_palette_4:  #2F5E6E;
-$c_palette_5:  #082C3A;
+$c_palette_2:  #a5cad3;
+$c_palette_3:  #80a6af;
+$c_palette_4:  #2f5e6e;
+$c_palette_5:  #082c3a;
 
 html, body {
   font-family: sans-serif;
@@ -36,6 +36,10 @@ h1 {
   text-align: center;
   margin-top: 2rem;
   padding: 0 2rem;
+
+  @media screen and ($mq_nomensland_max) {
+    font-size: 150%;
+  }
 }
 
 h3 {
@@ -47,26 +51,18 @@ h3 {
   max-width: 1400px;
   margin: 2em auto 2em;
   padding: 2em 1em;
-  outline: 1px dashed rgba($c_palette_5,0.5);
+  border: 1px dashed rgba($c_palette_5,0.5);
 }
 
 .legend {
-
-  span {
-    padding: 0.5em;
-    display: inline-block;
-    outline: 1px solid rgba($c_palette_5,0.5);
-  }
-
   span > span {
-    margin-left: 0.5em;
   }
-
 }
 
 .legend--grid,
 .grid {
   color: white;
+  text-shadow: 1px 1px 0 rgba($c_palette_5, 0.5);
   background-color: $c_palette_2;
 }
 
@@ -78,6 +74,26 @@ h3 {
 .legend--grid__box,
 .grid__box {
   background-color: $c_palette_4;
+}
+
+.legend--grid,
+.legend--grid__item,
+.legend--grid__box {
+  margin-left: 0.5em;
+  padding: 0.5em;
+  display: inline-block;
+  outline: 1px solid rgba($c_palette_5,0.5);
+
+  @media screen and ($mq_small_max) {
+    width: 100%;
+    margin-left: 0;
+    padding: 0.5em;
+    display: block;
+  }
+}
+
+.legend--grid {
+  margin-left: 0;
 }
 
 .grid {
