@@ -10,14 +10,15 @@ $use_font-size-0:         false !default;
 $font-size_px:            16 !default;
 $font-size:               get-rem($font-size_px) !default;
 
-$line-height:             1.39 !default;
+$line-height:             1.68 !default;
 
 $gutter_width_px_value:   22 !default;
 $gutter_width_px:         $gutter_width_px_value * 1px !default; // for retro-compatibility issue
 $gutter_width:            get-rem($gutter_width_px) !default;
 
 $has_row_gap:             true !default;
-$gap_between_rows:        $line-height * 1em;
+$gap_between_rows_px:     $line-height * $font-size_px * 1px;
+$gap_between_rows:        $line-height * 1rem;
 
 $expand_push:             false !default;
 $expand_pull:             false !default;
@@ -97,6 +98,7 @@ $define_micro_classes:    false !default;
   @extend .zsf-parent;
 
   @if ($has_row_gap == true) {
+    padding-bottom: $gap_between_rows_px; // Used padding to allow background symmetry
     padding-bottom: $gap_between_rows; // Used padding to allow background symmetry
   }
 
