@@ -23,7 +23,7 @@ It optionally uses the ZeroSpace Font to remove white spaces between inline-bloc
 No REAL instructions here for now, sorry.
 I will write down full instructions one day. I promise!
 
-**But you could check the [example page](examples/examples.html) to look at the code and the effects.**
+**But you could check the [example page](https://marcolago.github.io/FPAWIP-Grid/examples/examples.html) to look at the code and the effects.**
 
 The grid is neither desktop-first nor mobile-first.
 Every size class works only for the specifed breakpoint.
