@@ -1,8 +1,9 @@
-$c_palette_1: #9cdaf4;
-$c_palette_2: #eef5db;
-$c_palette_3: #f35f55;
-$c_palette_4: #69D2E7;
-$c_palette_5: #4c5864;
+$c_palette_1:  #FACDC8;
+$c_palette_1b: #cc0000;
+$c_palette_2:  #A5CAD3;
+$c_palette_3:  #80A6AF;
+$c_palette_4:  #2F5E6E;
+$c_palette_5:  #082C3A;
 
 html, body {
   font-family: sans-serif;
@@ -16,6 +17,7 @@ html, body {
 *:before,
 *:after {
   box-sizing: inherit;
+  outline-offset: -1px;
 }
 
 * {
@@ -26,41 +28,69 @@ html, body {
   margin-top: 1em;
 }
 
-h3 {
-  text-align: center;
-  font-weight: normal;
-  margin: 0 0 1rem 0;
-  padding: 0 2em;
+br {
+  margin-top: 0;
 }
 
-.legend {
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+h3 {
+  margin: 0 0 1rem 0;
+}
+
+.reference-box {
   width: 90%;
   max-width: 1400px;
   margin: 2em auto 2em;
   padding: 2em 1em;
-  border: 1px dashed rgba($c_palette_5,0.5);
+  outline: 1px dashed rgba($c_palette_5,0.5);
+}
+
+.legend {
 
   span {
     padding: 0.5em;
     display: inline-block;
-    border: 1px solid rgba($c_palette_5,0.5);
+    outline: 1px solid rgba($c_palette_5,0.5);
   }
 
   span > span {
     margin-left: 0.5em;
   }
+
 }
 
-.legend--grid {
+.legend--grid,
+.grid {
+  color: white;
   background-color: $c_palette_2;
 }
 
-.legend--grid__item {
-  background-color: $c_palette_1;
+.legend--grid__item,
+.grid__item {
+  background-color: $c_palette_3;
 }
 
-.legend--grid__box {
+.legend--grid__box,
+.grid__box {
   background-color: $c_palette_4;
+}
+
+.grid {
+  margin-top: 0.5em;
+}
+
+.grid__item {
+  outline: 1px solid $c_palette_5;
+}
+
+.grid__box {
+  padding: 0.5em;
+  outline: 1px solid $c_palette_5;
 }
 
 .wrapper {
@@ -69,7 +99,7 @@ h3 {
   margin: 2em auto;
   padding: 2em 0;
   position: relative;
-  background-color: rgba($c_palette_3, 0.05);
+  background-color: rgba($c_palette_1, 0.2);
 
   &:before,
   &:after {
@@ -79,7 +109,7 @@ h3 {
     top: 0;
     bottom: 0;
     z-index: 10;
-    border-left: 1px dashed rgba(#f35f55, 0.5);
+    border-left: 1px dashed rgba($c_palette_1b, 0.75);
   }
 
   &:before {
@@ -88,7 +118,8 @@ h3 {
     font-style: italic;
     line-height: 1.5;
     white-space: nowrap;
-    color: $c_palette_3;
+    color: $c_palette_1b;
+    color: rgba($c_palette_1b, 0.75);
     padding: 0.25em 0.5em;
   }
 
@@ -97,17 +128,7 @@ h3 {
   }
 }
 
-.grid {
-  background-color: $c_palette_2;
-}
-
-.grid__item {
-  background-color: $c_palette_1;
-  border: 1px solid rgba($c_palette_5,0.5);
-}
-
-.grid__box {
-  padding: 0.5em;
-  background-color: $c_palette_4;
-  border: 1px solid rgba($c_palette_5,0.5);
+.wrapper h3 {
+  text-align: center;
+  padding: 0 2rem;
 }

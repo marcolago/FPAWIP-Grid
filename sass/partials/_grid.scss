@@ -324,6 +324,48 @@ $define_micro_classes:    false !default;
     width: 100%;
   }
 
+  // tenth
+
+  .#{$size_class}--1-10 {
+    width: get-percent(1,10);
+  }
+
+  .#{$size_class}--2-10,
+  .#{$size_class}--1-5 {
+    width: get-percent(2,10);
+  }
+
+  .#{$size_class}--3-10 {
+    width: get-percent(3,10);
+  }
+
+  .#{$size_class}--4-10, 
+  .#{$size_class}--2-5 {
+    width: get-percent(4,10);
+  }
+
+  .#{$size_class}--5-10 {
+    width: get-percent(5,10);
+  }
+
+  .#{$size_class}--6-10,
+  .#{$size_class}--3-5 {
+    width: get-percent(6,10);
+  }
+
+  .#{$size_class}--7-10 {
+    width: get-percent(7,10);
+  }
+
+  .#{$size_class}--8-10,
+  .#{$size_class}--4-5 {
+    width: get-percent(8,10);
+  }
+
+  .#{$size_class}--9-10 {
+    width: get-percent(9,10);
+  }
+
   // golden ratio
 
   // eights
@@ -460,6 +502,66 @@ $define_micro_classes:    false !default;
     flex-grow: 1;
   }
 
+  // tenth
+
+  .#{$size_class}--1-10 {
+    min-width: get-percent(1,10);
+    flex-basis: get-percent(1,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--2-10,
+  .#{$size_class}--1-5 {
+    min-width: get-percent(2,10);
+    flex-basis: get-percent(2,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--3-10 {
+    min-width: get-percent(3,10);
+    flex-basis: get-percent(3,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--4-10, 
+  .#{$size_class}--2-5 {
+    min-width: get-percent(4,10);
+    flex-basis: get-percent(4,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--5-10 {
+    min-width: get-percent(5,10);
+    flex-basis: get-percent(5,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--6-10,
+  .#{$size_class}--3-5 {
+    min-width: get-percent(6,10);
+    flex-basis: get-percent(6,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--7-10 {
+    min-width: get-percent(7,10);
+    flex-basis: get-percent(7,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--8-10,
+  .#{$size_class}--4-5 {
+    min-width: get-percent(8,10);
+    flex-basis: get-percent(8,10);
+    flex-grow: 1;
+  }
+
+  .#{$size_class}--9-10 {
+    min-width: get-percent(9,10);
+    flex-basis: get-percent(9,10);
+    flex-grow: 1;
+  }
+
   // golden ratio
 
   // eights
@@ -523,8 +625,6 @@ $define_micro_classes:    false !default;
   }
 
 }
-
-// @include sizes("all");
 
 .no-opacity,
 .lte-ie-8 {
