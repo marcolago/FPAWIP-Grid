@@ -4,7 +4,6 @@
 /* ZERO-SPACE FONT HACK ©marcolago 2014 */
 
 $f_body_stack:            sans-serif !default;
-$use_zerospacefont:       true !default;
 $use_font-size-0:         false !default;
 
 $font-size_px:            16 !default;
@@ -16,7 +15,6 @@ $gutter_width_px_value:   22 !default;
 $gutter_width_px:         $gutter_width_px_value * 1px !default; // for retro-compatibility issue
 $gutter_width:            get-rem($gutter_width_px) !default;
 
-$has_row_gap:             true !default;
 $gap_between_rows_px:     $line-height * $font-size_px * 1px;
 $gap_between_rows:        $line-height * 1rem;
 
@@ -26,19 +24,25 @@ $nomensland_label:        "nml" !default;
 $small_label:             "small" !default;
 $micro_label:             "micro" !default;
 
-// flags
+/* configuration flags */
 
-$use_sizes_min:           true !default;
-$define_micro_size:       false !default;
+$use_zerospacefont:       true !default;         // set to true to remove the white space for the inline-block elements without setting the font-size to 0
+$has_row_gap:             true !default;         // set to true to have horizontal space over and down the elements
+$use_symmetric_gutters:   false !default;        // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
 
+$define_sizes:            true !default;        // set to true at leas one of the columns variables
+$define_12_columns:       true !default;
+$define_10_columns:       true !default;
+$define_golden_columns:   true !default;
 
-$use_push:                false !default;
-$expand_push:             false !default;
+$define_sizes_min:        true !default;
+$define_micro_size:       true !default;
 
-$use_pull:                false !default;
-$expand_pull:             false !default;
+$define_push:             true !default;
+$expand_push:             true !default;
 
-$use_symmetric_gutters:   false !default; // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
+$define_pull:             true !default;
+$expand_pull:             true !default;
 
 
 /* set $use_zerospacefont to true to use Zero-Space Font for removing white space between inline-block elements */
@@ -275,149 +279,161 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
 @mixin sizes($size_class) {
 
   // twelves
+  
+  @if ($define_12_columns == true) {
 
-  .#{$size_class}--1-12 {
-    width: get-percent(1,12);
-  }
+    .#{$size_class}--1-12 {
+      width: get-percent(1,12);
+    }
 
-  .#{$size_class}--2-12,
-  .#{$size_class}--1-6 {
-    width: get-percent(2,12);
-  }
+    .#{$size_class}--2-12,
+    .#{$size_class}--1-6 {
+      width: get-percent(2,12);
+    }
 
-  .#{$size_class}--3-12,
-  .#{$size_class}--1-4 {
-    width: get-percent(3,12);
-  }
+    .#{$size_class}--3-12,
+    .#{$size_class}--1-4 {
+      width: get-percent(3,12);
+    }
 
-  .#{$size_class}--4-12,
-  .#{$size_class}--2-6,
-  .#{$size_class}--1-3 {
-    width: get-percent(4,12);
-  }
+    .#{$size_class}--4-12,
+    .#{$size_class}--2-6,
+    .#{$size_class}--1-3 {
+      width: get-percent(4,12);
+    }
 
-  .#{$size_class}--5-12 {
-    width: get-percent(5,12);
-  }
+    .#{$size_class}--5-12 {
+      width: get-percent(5,12);
+    }
 
-  .#{$size_class}--6-12,
-  .#{$size_class}--3-6,
-  .#{$size_class}--2-4,
-  .#{$size_class}--1-2 {
-    width: get-percent(6,12);
-  }
+    .#{$size_class}--6-12,
+    .#{$size_class}--3-6,
+    .#{$size_class}--2-4,
+    .#{$size_class}--1-2 {
+      width: get-percent(6,12);
+    }
 
-  .#{$size_class}--7-12 {
-    width: get-percent(7,12);
-  }
+    .#{$size_class}--7-12 {
+      width: get-percent(7,12);
+    }
 
-  .#{$size_class}--8-12,
-  .#{$size_class}--2-3 {
-    width: get-percent(8,12);
-  }
+    .#{$size_class}--8-12,
+    .#{$size_class}--2-3 {
+      width: get-percent(8,12);
+    }
 
-  .#{$size_class}--9-12,
-  .#{$size_class}--3-4 {
-    width: get-percent(9,12);
-  }
+    .#{$size_class}--9-12,
+    .#{$size_class}--3-4 {
+      width: get-percent(9,12);
+    }
 
-  .#{$size_class}--10-12,
-  .#{$size_class}--5-6 {
-    width: get-percent(10,12);
-  }
+    .#{$size_class}--10-12,
+    .#{$size_class}--5-6 {
+      width: get-percent(10,12);
+    }
 
-  .#{$size_class}--11-12 {
-    width: get-percent(11,12);
-  }
+    .#{$size_class}--11-12 {
+      width: get-percent(11,12);
+    }
 
-  .#{$size_class}--full {
-    width: 100%;
+    .#{$size_class}--full {
+      width: 100%;
+    }
+
   }
 
   // tenth
 
-  .#{$size_class}--1-10 {
-    width: get-percent(1,10);
-  }
+  @if ($define_10_columns == true) {
 
-  .#{$size_class}--2-10,
-  .#{$size_class}--1-5 {
-    width: get-percent(2,10);
-  }
+    .#{$size_class}--1-10 {
+      width: get-percent(1,10);
+    }
 
-  .#{$size_class}--3-10 {
-    width: get-percent(3,10);
-  }
+    .#{$size_class}--2-10,
+    .#{$size_class}--1-5 {
+      width: get-percent(2,10);
+    }
 
-  .#{$size_class}--4-10, 
-  .#{$size_class}--2-5 {
-    width: get-percent(4,10);
-  }
+    .#{$size_class}--3-10 {
+      width: get-percent(3,10);
+    }
 
-  .#{$size_class}--5-10 {
-    width: get-percent(5,10);
-  }
+    .#{$size_class}--4-10, 
+    .#{$size_class}--2-5 {
+      width: get-percent(4,10);
+    }
 
-  .#{$size_class}--6-10,
-  .#{$size_class}--3-5 {
-    width: get-percent(6,10);
-  }
+    .#{$size_class}--5-10 {
+      width: get-percent(5,10);
+    }
 
-  .#{$size_class}--7-10 {
-    width: get-percent(7,10);
-  }
+    .#{$size_class}--6-10,
+    .#{$size_class}--3-5 {
+      width: get-percent(6,10);
+    }
 
-  .#{$size_class}--8-10,
-  .#{$size_class}--4-5 {
-    width: get-percent(8,10);
-  }
+    .#{$size_class}--7-10 {
+      width: get-percent(7,10);
+    }
 
-  .#{$size_class}--9-10 {
-    width: get-percent(9,10);
+    .#{$size_class}--8-10,
+    .#{$size_class}--4-5 {
+      width: get-percent(8,10);
+    }
+
+    .#{$size_class}--9-10 {
+      width: get-percent(9,10);
+    }
+
   }
 
   // golden ratio
 
-  // eights
+  @if ($define_golden_columns == true) {
 
-  .#{$size_class}--3-8 {
-    width: get-percent(3,8);
-  }
+    // eights
 
-  .#{$size_class}--5-8 {
-    width: get-percent(5,8);
-  }
+    .#{$size_class}--3-8 {
+      width: get-percent(3,8);
+    }
 
-  // elevenths
+    .#{$size_class}--5-8 {
+      width: get-percent(5,8);
+    }
 
-  .#{$size_class}--3-11 {
-    width: get-percent(3,11);
-  }
+    // elevenths
 
-  .#{$size_class}--5-11 {
-    width: get-percent(5,11);
-  }
+    .#{$size_class}--3-11 {
+      width: get-percent(3,11);
+    }
 
-  .#{$size_class}--8-11 {
-    width: get-percent(8,11);
-  }
+    .#{$size_class}--5-11 {
+      width: get-percent(5,11);
+    }
 
-  // thirteenths
+    .#{$size_class}--8-11 {
+      width: get-percent(8,11);
+    }
 
-  .#{$size_class}--3-13 {
-    width: get-percent(3,13);
-  }
+    // thirteenths
 
-  .#{$size_class}--5-13 {
-    width: get-percent(5,13);
-  }
+    .#{$size_class}--3-13 {
+      width: get-percent(3,13);
+    }
 
-  .#{$size_class}--8-13 {
-    width: get-percent(8,13);
-  }
+    .#{$size_class}--5-13 {
+      width: get-percent(5,13);
+    }
 
-  .#{$size_class}--11-13 {
-    width: get-percent(11,13);
+    .#{$size_class}--8-13 {
+      width: get-percent(8,13);
+    }
+
+    .#{$size_class}--11-13 {
+      width: get-percent(11,13);
+    }
+
   }
 
 }
@@ -636,46 +652,66 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
 
 }
 
+/*
+ ######  #### ######## ########  ######
+##    ##  ##       ##  ##       ##    ##
+##        ##      ##   ##       ##
+ ######   ##     ##    ######    ######
+      ##  ##    ##     ##             ##
+##    ##  ##   ##      ##       ##    ##
+ ######  #### ######## ########  ######
+*/
+
 .no-opacity,
 .lte-ie-8 {
-  @include sizes($large_label);
-  @if ($use_sizes_min == true) {
+  @if ($define_sizes == true) {
+    @include sizes($large_label);
+  }
+  @if ($define_sizes_min == true) {
     @include sizes-min($large_label);
   }
 }
 
 @media screen and ($mq_large_min) {
-  @include sizes($large_label);
-  @if ($use_sizes_min == true) {
+  @if ($define_sizes == true) {
+    @include sizes($large_label);
+  }
+  @if ($define_sizes_min == true) {
     @include sizes-min($large_label);
   }
 }
 
 @media screen and ($mq_medium_max) and ($mq_medium_min) {
-  @include sizes($medium_label);
-  @if ($use_sizes_min == true) {
+  @if ($define_sizes == true) {
+    @include sizes($medium_label);
+  }
+  @if ($define_sizes_min == true) {
     @include sizes-min($medium_label);
   }
 }
 
 @media screen and ($mq_nomensland_max) and ($mq_nomensland_min) {
-  @include sizes($nomensland_label);
-  @if ($use_sizes_min == true) {
+  @if ($define_sizes == true) {
+    @include sizes($nomensland_label);
+  }
+  @if ($define_sizes_min == true) {
     @include sizes-min($nomensland_label);
   }
 }
 
 @media screen and ($mq_small_max) {
-  @include sizes($small_label);
-  @if ($use_sizes_min == true) {
+  @if ($define_sizes == true) {
+    @include sizes($small_label);
+  }
+  @if ($define_sizes_min == true) {
     @include sizes-min($small_label);
   }
 }
 
-@if ($define_micro_size) {
+@if ($define_sizes == true and $define_micro_size == true) {
   @media screen and ($mq_micro_max) {
     @include sizes($micro_label);
-    @if ($use_sizes_min == true) {
+    @if ($define_sizes_min == true) {
       @include sizes-min($micro_label);
     }
   }
@@ -691,213 +727,319 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
 ##         #######   ######  ##     ## 
 */
 
-@if ($use_push == true) {
+@if ($define_push == true) {
 
-  .push--1-12 {
-    left: get-percent(1,12);
+  @if ($define_12_columns == true) {
+
+    .push--1-12 {
+      left: get-percent(1,12);
+    }
+
+    .push--2-12,
+    .push--1-6 {
+      left: get-percent(2,12);
+    }
+
+    .push--3-12,
+    .push--1-4 {
+      left: get-percent(3,12);
+    }
+
+    .push--4-12,
+    .push--2-6,
+    .push--1-3 {
+      left: get-percent(4,12);
+    }
+
+    .push--5-12 {
+      left: get-percent(5,12);
+    }
+
+    .push--6-12,
+    .push--3-6,
+    .push--2-4,
+    .push--1-2 {
+      left: get-percent(6,12);
+    }
+
+    .push--7-12 {
+      left: get-percent(7,12);
+    }
+
+    .push--8-12,
+    .push--2-3 {
+      left: get-percent(8,12);
+    }
+
+    .push--9-12,
+    .push--3-4 {
+      left: get-percent(9,12);
+    }
+
+    .push--10-12,
+    .push--5-6 {
+      left: get-percent(10,12);
+    }
+
+    .push--11-12 {
+      left: get-percent(11,12);
+    }
+
   }
 
-  .push--2-12,
-  .push--1-6 {
-    left: get-percent(2,12);
-  }
+  // tenth
 
-  .push--3-12,
-  .pushpush--1-4 {
-    left: get-percent(3,12);
-  }
+  @if ($define_10_columns == true) {
 
-  .push--4-12,
-  .push--2-6,
-  .push--1-3 {
-    left: get-percent(4,12);
-  }
+    .push--1-10 {
+      width: get-percent(1,10);
+    }
 
-  .push--5-12 {
-    left: get-percent(5,12);
-  }
+    .push--2-10,
+    .push--1-5 {
+      width: get-percent(2,10);
+    }
 
-  .push--6-12,push
-  .push--3-6,
-  .push--2-4,
-  .push--1-2 {
-    left: get-percent(6,12);
-  }
+    .push--3-10 {
+      width: get-percent(3,10);
+    }
 
-  .push--7-12 {
-    left: get-percent(7,12);
-  }
+    .push--4-10, 
+    .push--2-5 {
+      width: get-percent(4,10);
+    }
 
-  .push--8-12,
-  .push--2-3 {
-    left: get-percent(8,12);
-  }
+    .push--5-10 {
+      width: get-percent(5,10);
+    }
 
-  .push--9-12,left
-  .push--3-4 {
-    left: get-percent(9,12);
-  }
+    .push--6-10,
+    .push--3-5 {
+      width: get-percent(6,10);
+    }
 
-  .push--10-12,
-  .push--5-6 {
-    left: get-percent(10,12);
-  }
+    .push--7-10 {
+      width: get-percent(7,10);
+    }
 
-  .push--11-12 {
-    left: get-percent(11,12);
+    .push--8-10,
+    .push--4-5 {
+      width: get-percent(8,10);
+    }
+
+    .push--9-10 {
+      width: get-percent(9,10);
+    }
+
   }
 
   // golden ratio
 
-  // eights
+  @if ($define_golden_columns == true) {
 
-  .push--3-8 {
-    left: get-percent(3,8);
-  }
+    // eights
 
-  .push--5-8 {
-    left: get-percent(5,8);
-  }
+    .push--3-8 {
+      left: get-percent(3,8);
+    }
 
-  // elevenths
+    .push--5-8 {
+      left: get-percent(5,8);
+    }
 
-  .push--3-11 {
-    left: get-percent(3,11);
-  }
+    // elevenths
 
-  .push--5-11 {
-    left: get-percent(5,11);
-  }
+    .push--3-11 {
+      left: get-percent(3,11);
+    }
 
-  .push--8-11 {
-    left: get-percent(8,11);
-  }
+    .push--5-11 {
+      left: get-percent(5,11);
+    }
 
-  // thirteenths
+    .push--8-11 {
+      left: get-percent(8,11);
+    }
 
-  .push--3-13 {
-    left: get-percent(3,13);
-  }
+    // thirteenths
 
-  .push--5-13 {
-    left: get-percent(5,13);
-  }
+    .push--3-13 {
+      left: get-percent(3,13);
+    }
 
-  .push--8-13 {
-    left: get-percent(8,13);
-  }
+    .push--5-13 {
+      left: get-percent(5,13);
+    }
 
-  .push--11-13 {
-    left: get-percent(11,13);
+    .push--8-13 {
+      left: get-percent(8,13);
+    }
+
+    .push--11-13 {
+      left: get-percent(11,13);
+    }
+
   }
 
 }
-
-
 
 @mixin push-sizes($size_class) {
 
-  .push-#{$size_class}--1-12 {
-    left: get-percent(1,12);
+  @if ($define_12_columns == true) {
+
+    .push-#{$size_class}--1-12 {
+      left: get-percent(1,12);
+    }
+
+    .push-#{$size_class}--2-12,
+    .push-#{$size_class}--1-6 {
+      left: get-percent(2,12);
+    }
+
+    .push-#{$size_class}--3-12,
+    .push-#{$size_class}--1-4 {
+      left: get-percent(3,12);
+    }
+
+    .push-#{$size_class}--4-12,
+    .push-#{$size_class}--2-6,
+    .push-#{$size_class}--1-3 {
+      left: get-percent(4,12);
+    }
+
+    .push-#{$size_class}--5-12 {
+      left: get-percent(5,12);
+    }
+
+    .push-#{$size_class}--6-12,
+    .push-#{$size_class}--3-6,
+    .push-#{$size_class}--2-4,
+    .push-#{$size_class}--1-2 {
+      left: get-percent(6,12);
+    }
+
+    .push-#{$size_class}--7-12 {
+      left: get-percent(7,12);
+    }
+
+    .push-#{$size_class}--8-12,
+    .push-#{$size_class}--2-3 {
+      left: get-percent(8,12);
+    }
+
+    .push-#{$size_class}--9-12,
+    .push-#{$size_class}--3-4 {
+      left: get-percent(9,12);
+    }
+
+    .push-#{$size_class}--10-12,
+    .push-#{$size_class}--5-6 {
+      left: get-percent(10,12);
+    }
+
+    .push-#{$size_class}--11-12 {
+      left: get-percent(11,12);
+    }
+
   }
 
-  .push-#{$size_class}--2-12,
-  .push-#{$size_class}--1-6 {
-    left: get-percent(2,12);
-  }
+  // tenth
 
-  .push-#{$size_class}--3-12,
-  .push-#{$size_class}push--1-4 {
-    left: get-percent(3,12);
-  }
+  @if ($define_10_columns == true) {
 
-  .push-#{$size_class}--4-12,
-  .push-#{$size_class}--2-6,
-  .push-#{$size_class}--1-3 {
-    left: get-percent(4,12);
-  }
+    .push-#{$size_class}--1-10 {
+      width: get-percent(1,10);
+    }
 
-  .push-#{$size_class}--5-12 {
-    left: get-percent(5,12);
-  }
+    .push-#{$size_class}--2-10,
+    .push-#{$size_class}--1-5 {
+      width: get-percent(2,10);
+    }
 
-  .push-#{$size_class}--6-12,push
-  .push-#{$size_class}--3-6,
-  .push-#{$size_class}--2-4,
-  .push-#{$size_class}--1-2 {
-    left: get-percent(6,12);
-  }
+    .push-#{$size_class}--3-10 {
+      width: get-percent(3,10);
+    }
 
-  .push-#{$size_class}--7-12 {
-    left: get-percent(7,12);
-  }
+    .push-#{$size_class}--4-10, 
+    .push-#{$size_class}--2-5 {
+      width: get-percent(4,10);
+    }
 
-  .push-#{$size_class}--8-12,
-  .push-#{$size_class}--2-3 {
-    left: get-percent(8,12);
-  }
+    .push-#{$size_class}--5-10 {
+      width: get-percent(5,10);
+    }
 
-  .push-#{$size_class}--9-12,left
-  .push-#{$size_class}--3-4 {
-    left: get-percent(9,12);
-  }
+    .push-#{$size_class}--6-10,
+    .push-#{$size_class}--3-5 {
+      width: get-percent(6,10);
+    }
 
-  .push-#{$size_class}--10-12,
-  .push-#{$size_class}--5-6 {
-    left: get-percent(10,12);
-  }
+    .push-#{$size_class}--7-10 {
+      width: get-percent(7,10);
+    }
 
-  .push-#{$size_class}--11-12 {
-    left: get-percent(11,12);
+    .push-#{$size_class}--8-10,
+    .push-#{$size_class}--4-5 {
+      width: get-percent(8,10);
+    }
+
+    .push-#{$size_class}--9-10 {
+      width: get-percent(9,10);
+    }
+
   }
 
   // golden ratio
 
-  // eights
+  @if ($define_golden_columns == true) {
 
-  .push-#{$size_class}--3-8 {
-    left: get-percent(3,8);
-  }
+    // eights
 
-  .push-#{$size_class}--5-8 {
-    left: get-percent(5,8);
-  }
+    .push-#{$size_class}--3-8 {
+      left: get-percent(3,8);
+    }
 
-  // elevenths
+    .push-#{$size_class}--5-8 {
+      left: get-percent(5,8);
+    }
 
-  .push-#{$size_class}--3-11 {
-    left: get-percent(3,11);
-  }
+    // elevenths
 
-  .push-#{$size_class}--5-11 {
-    left: get-percent(5,11);
-  }
+    .push-#{$size_class}--3-11 {
+      left: get-percent(3,11);
+    }
 
-  .push-#{$size_class}--8-11 {
-    left: get-percent(8,11);
-  }
+    .push-#{$size_class}--5-11 {
+      left: get-percent(5,11);
+    }
 
-  // thirteenths
+    .push-#{$size_class}--8-11 {
+      left: get-percent(8,11);
+    }
 
-  .push-#{$size_class}--3-13 {
-    left: get-percent(3,13);
-  }
+    // thirteenths
 
-  .push-#{$size_class}--5-13 {
-    left: get-percent(5,13);
-  }
+    .push-#{$size_class}--3-13 {
+      left: get-percent(3,13);
+    }
 
-  .push-#{$size_class}--8-13 {
-    left: get-percent(8,13);
-  }
+    .push-#{$size_class}--5-13 {
+      left: get-percent(5,13);
+    }
 
-  .push-#{$size_class}--11-13 {
-    left: get-percent(11,13);
+    .push-#{$size_class}--8-13 {
+      left: get-percent(8,13);
+    }
+
+    .push-#{$size_class}--11-13 {
+      left: get-percent(11,13);
+    }
+
   }
 
 }
 
-@if ($expand_push == true) {
+@if ($expand_push == true and $define_sizes == true) {
   .no-opacity,
   .lte-ie-8 {
     @include push-sizes("large");
@@ -919,8 +1061,10 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
     @include push-sizes("small");
   }
 
-  @media screen and ($mq_micro_max) {
-    @include push-sizes("micro");
+  @if ($define_micro_size == true) {
+    @media screen and ($mq_micro_max) {
+      @include push-sizes("micro");
+    }
   }
 }
 
@@ -934,104 +1078,158 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
 ##         #######  ######## ######## 
 */
 
-@if ($use_pull == true) {
+@if ($define_pull == true) {
 
-  .pull--1-12 {
-    right: get-percent(1,12);
+  @if ($define_12_columns == true) {
+
+    .pull--1-12 {
+      right: get-percent(1,12);
+    }
+
+    .pull--2-12,
+    .pull--1-6 {
+      right: get-percent(2,12);
+    }
+
+    .pull--3-12,
+    .pull--1-4 {
+      right: get-percent(3,12);
+    }
+
+    .pull--4-12,
+    .pull--2-6,
+    .pull--1-3 {
+      right: get-percent(4,12);
+    }
+
+    .pull--5-12 {
+      right: get-percent(5,12);
+    }
+
+    .pull--6-12,
+    .pull--3-6,
+    .pull--2-4,
+    .pull--1-2 {
+      right: get-percent(6,12);
+    }
+
+    .pull--7-12 {
+      right: get-percent(7,12);
+    }
+
+    .pull--8-12,
+    .pull--2-3 {
+      right: get-percent(8,12);
+    }
+
+    .pull--9-12,
+    .pull--3-4 {
+      right: get-percent(9,12);
+    }
+
+    .pull--10-12,
+    .pull--5-6 {
+      right: get-percent(10,12);
+    }
+
+    .pull--11-12 {
+      right: get-percent(11,12);
+    }
+
   }
 
-  .pull--2-12,
-  .pull--1-6 {
-    right: get-percent(2,12);
-  }
+  // tenth
 
-  .pull--3-12,
-  .pull--1-4 {
-    right: get-percent(3,12);
-  }
+  @if ($define_10_columns == true) {
 
-  .pull--4-12,
-  .pull--2-6,
-  .pull--1-3 {
-    right: get-percent(4,12);
-  }
+    .pull--1-10 {
+      width: get-percent(1,10);
+    }
 
-  .pull--5-12 {
-    right: get-percent(5,12);
-  }
+    .pull--2-10,
+    .pull--1-5 {
+      width: get-percent(2,10);
+    }
 
-  .pull--6-12,pull
-  .pull--3-6,
-  .pull--2-4,
-  .pull--1-2 {
-    right: get-percent(6,12);
-  }
+    .pull--3-10 {
+      width: get-percent(3,10);
+    }
 
-  .pull--7-12 {
-    right: get-percent(7,12);
-  }
+    .pull--4-10, 
+    .pull--2-5 {
+      width: get-percent(4,10);
+    }
 
-  .pull--8-12,
-  .pull--2-3 {
-    right: get-percent(8,12);
-  }
+    .pull--5-10 {
+      width: get-percent(5,10);
+    }
 
-  .pull--9-12,left
-  .pull--3-4 {
-    right: get-percent(9,12);
-  }
+    .pull--6-10,
+    .pull--3-5 {
+      width: get-percent(6,10);
+    }
 
-  .pull--10-12,
-  .pull--5-6 {
-    right: get-percent(10,12);
-  }
+    .pull--7-10 {
+      width: get-percent(7,10);
+    }
 
-  .pull--11-12 {
-    right: get-percent(11,12);
+    .pull--8-10,
+    .pull--4-5 {
+      width: get-percent(8,10);
+    }
+
+    .pull--9-10 {
+      width: get-percent(9,10);
+    }
+
   }
 
   // golden ratio
 
-  // eights
+  @if ($define_golden_columns == true) {
 
-  .pull--3-8 {
-    right: get-percent(3,8);
-  }
+    // eights
 
-  .pull--5-8 {
-    right: get-percent(5,8);
-  }
+    .pull--3-8 {
+      right: get-percent(3,8);
+    }
 
-  // elevenths
+    .pull--5-8 {
+      right: get-percent(5,8);
+    }
 
-  .pull--3-11 {
-    right: get-percent(3,11);
-  }
+    // elevenths
 
-  .pull--5-11 {
-    right: get-percent(5,11);
-  }
+    .pull--3-11 {
+      right: get-percent(3,11);
+    }
 
-  .pull--8-11 {
-    right: get-percent(8,11);
-  }
+    .pull--5-11 {
+      right: get-percent(5,11);
+    }
 
-  // thirteenths
+    .pull--8-11 {
+      right: get-percent(8,11);
+    }
 
-  .pull--3-13 {
-    right: get-percent(3,13);
-  }
+    // thirteenths
 
-  .pull--5-13 {
-    right: get-percent(5,13);
-  }
+    .pull--3-13 {
+      right: get-percent(3,13);
+    }
 
-  .pull--8-13 {
-    right: get-percent(8,13);
-  }
+    .pull--5-13 {
+      right: get-percent(5,13);
+    }
 
-  .pull--11-13 {
-    right: get-percent(11,13);
+    .pull--8-13 {
+      right: get-percent(8,13);
+    }
+
+    .pull--11-13 {
+      right: get-percent(11,13);
+    }
+
   }
 
 }
@@ -1039,108 +1237,162 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
 
 
 @mixin pull-sizes($size_class) {
+
+  @if ($define_12_columns == true) {
   
-  .pull-#{$size_class}--1-12 {
-    right: get-percent(1,12);
+    .pull-#{$size_class}--1-12 {
+      right: get-percent(1,12);
+    }
+
+    .pull-#{$size_class}--2-12,
+    .pull-#{$size_class}--1-6 {
+      right: get-percent(2,12);
+    }
+
+    .pull-#{$size_class}--3-12,
+    .pull-#{$size_class}--1-4 {
+      right: get-percent(3,12);
+    }
+
+    .pull-#{$size_class}--4-12,
+    .pull-#{$size_class}--2-6,
+    .pull-#{$size_class}--1-3 {
+      right: get-percent(4,12);
+    }
+
+    .pull-#{$size_class}--5-12 {
+      right: get-percent(5,12);
+    }
+
+    .pull-#{$size_class}--6-12,
+    .pull-#{$size_class}--3-6,
+    .pull-#{$size_class}--2-4,
+    .pull-#{$size_class}--1-2 {
+      right: get-percent(6,12);
+    }
+
+    .pull-#{$size_class}--7-12 {
+      right: get-percent(7,12);
+    }
+
+    .pull-#{$size_class}--8-12,
+    .pull-#{$size_class}--2-3 {
+      right: get-percent(8,12);
+    }
+
+    .pull-#{$size_class}--9-12,
+    .pull-#{$size_class}--3-4 {
+      right: get-percent(9,12);
+    }
+
+    .pull-#{$size_class}--10-12,
+    .pull-#{$size_class}--5-6 {
+      right: get-percent(10,12);
+    }
+
+    .pull-#{$size_class}--11-12 {
+      right: get-percent(11,12);
+    }
+
   }
 
-  .pull-#{$size_class}--2-12,
-  .pull-#{$size_class}--1-6 {
-    right: get-percent(2,12);
-  }
+  // tenth
 
-  .pull-#{$size_class}--3-12,
-  .pull-#{$size_class}--1-4 {
-    right: get-percent(3,12);
-  }
+  @if ($define_10_columns == true) {
 
-  .pull-#{$size_class}--4-12,
-  .pull-#{$size_class}--2-6,
-  .pull-#{$size_class}--1-3 {
-    right: get-percent(4,12);
-  }
+    .pull-#{$size_class}--1-10 {
+      width: get-percent(1,10);
+    }
 
-  .pull-#{$size_class}--5-12 {
-    right: get-percent(5,12);
-  }
+    .pull-#{$size_class}--2-10,
+    .pull-#{$size_class}--1-5 {
+      width: get-percent(2,10);
+    }
 
-  .pull-#{$size_class}--6-12,pull
-  .pull-#{$size_class}--3-6,
-  .pull-#{$size_class}--2-4,
-  .pull-#{$size_class}--1-2 {
-    right: get-percent(6,12);
-  }
+    .pull-#{$size_class}--3-10 {
+      width: get-percent(3,10);
+    }
 
-  .pull-#{$size_class}--7-12 {
-    right: get-percent(7,12);
-  }
+    .pull-#{$size_class}--4-10, 
+    .pull-#{$size_class}--2-5 {
+      width: get-percent(4,10);
+    }
 
-  .pull-#{$size_class}--8-12,
-  .pull-#{$size_class}--2-3 {
-    right: get-percent(8,12);
-  }
+    .pull-#{$size_class}--5-10 {
+      width: get-percent(5,10);
+    }
 
-  .pull-#{$size_class}--9-12,left
-  .pull-#{$size_class}--3-4 {
-    right: get-percent(9,12);
-  }
+    .pull-#{$size_class}--6-10,
+    .pull-#{$size_class}--3-5 {
+      width: get-percent(6,10);
+    }
 
-  .pull-#{$size_class}--10-12,
-  .pull-#{$size_class}--5-6 {
-    right: get-percent(10,12);
-  }
+    .pull-#{$size_class}--7-10 {
+      width: get-percent(7,10);
+    }
 
-  .pull-#{$size_class}--11-12 {
-    right: get-percent(11,12);
+    .pull-#{$size_class}--8-10,
+    .pull-#{$size_class}--4-5 {
+      width: get-percent(8,10);
+    }
+
+    .pull-#{$size_class}--9-10 {
+      width: get-percent(9,10);
+    }
+
   }
 
   // golden ratio
 
-  // eights
+  @if ($define_golden_columns == true) {
 
-  .pull-#{$size_class}--3-8 {
-    right: get-percent(3,8);
+    // eights
+
+    .pull-#{$size_class}--3-8 {
+      right: get-percent(3,8);
+    }
+
+    .pull-#{$size_class}--5-8 {
+      right: get-percent(5,8);
+    }
+
+    // elevenths
+
+    .pull-#{$size_class}--3-11 {
+      right: get-percent(3,11);
+    }
+
+    .pull-#{$size_class}--5-11 {
+      right: get-percent(5,11);
+    }
+
+    .pull-#{$size_class}--8-11 {
+      right: get-percent(8,11);
+    }
+
+    // thirteenths
+
+    .pull-#{$size_class}--3-13 {
+      right: get-percent(3,13);
+    }
+
+    .pull-#{$size_class}--5-13 {
+      right: get-percent(5,13);
+    }
+
+    .pull-#{$size_class}--8-13 {
+      right: get-percent(8,13);
+    }
+
+    .pull-#{$size_class}--11-13 {
+      right: get-percent(11,13);
+    }
+
   }
 
-  .pull-#{$size_class}--5-8 {
-    right: get-percent(5,8);
-  }
-
-  // elevenths
-
-  .pull-#{$size_class}--3-11 {
-    right: get-percent(3,11);
-  }
-
-  .pull-#{$size_class}--5-11 {
-    right: get-percent(5,11);
-  }
-
-  .pull-#{$size_class}--8-11 {
-    right: get-percent(8,11);
-  }
-
-  // thirteenths
-
-  .pull-#{$size_class}--3-13 {
-    right: get-percent(3,13);
-  }
-
-  .pull-#{$size_class}--5-13 {
-    right: get-percent(5,13);
-  }
-
-  .pull-#{$size_class}--8-13 {
-    right: get-percent(8,13);
-  }
-
-  .pull-#{$size_class}--11-13 {
-    right: get-percent(11,13);
-  }
 }
 
-
-@if ($expand_pull == true) {
+@if ($expand_pull == true and $define_sizes == true) {
   .no-opacity,
   .lte-ie-8 {
     @include pull-sizes("large");
@@ -1162,12 +1414,14 @@ $use_symmetric_gutters:   false !default; // it works fine but can cause horizon
     @include pull-sizes("small");
   }
 
-  @media screen and ($mq_micro_max) {
-    @include pull-sizes("micro");
+  @if ($define_micro_size == true) {
+    @media screen and ($mq_micro_max) {
+      @include pull-sizes("micro");
+    }
   }
 }
 
-// 
+// flexbox only
 
 .set-of-11  > .grid__item:nth-child(1n+12),
 .set-of-10  > .grid__item:nth-child(1n+11),

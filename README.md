@@ -13,6 +13,11 @@ I’ll do my best to help.
 The grid is built with a Flexbox-first, desktop-first, approach and then with a inline-block fallback for non-modern browsers.
 Tested on modern browsers and IE8+. Everything worked fine so far since 2012.
 
+### Size
+
+The generated css varies in size between 3.77KB and 9.68KB according to the settings.
+See the `flags` section in the `.grid.scss` file.
+
 ### Dependencies
 
 This grid has no dependencies.

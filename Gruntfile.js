@@ -18,6 +18,7 @@ module.exports = function(grunt) {
           sassDir: 'sass',
           cssDir: 'css',
           environment: 'production'
+          //environment: 'development',
         }
       }
     },
