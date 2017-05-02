@@ -21,7 +21,7 @@ See the `flags` section in the `.grid.scss` file.
 ### Dependencies
 
 This grid has no dependencies.
-It optionally uses the ZeroSpace Font to remove white spaces between inline-block elements, see https://github.com/marcolago/ZeroSpace-Font for more info.
+It optionally uses the ZeroSpace Font to remove white spaces between inline-block elements, see [ZeroSpace-Font Repository](https://github.com/marcolago/ZeroSpace-Font) for more info.
 
 ### Use 
 
