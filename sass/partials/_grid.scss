@@ -3,20 +3,16 @@
 
 /* ZERO-SPACE FONT HACK ©marcolago 2014 */
 
+/* overridable variables */
+
 $f_body_stack:            sans-serif !default;
 $use_font-size-0:         false !default;
 
 $font-size_px:            16 !default;
-$font-size:               get-rem($font-size_px) !default;
 
 $line-height:             1.68 !default;
 
 $gutter_width_px_value:   22 !default;
-$gutter_width_px:         $gutter_width_px_value * 1px !default; // for retro-compatibility issue
-$gutter_width:            get-rem($gutter_width_px) !default;
-
-$gap_between_rows_px:     $line-height * $font-size_px * 1px;
-$gap_between_rows:        $line-height * 1rem;
 
 $large_label:             "large" !default;
 $medium_label:            "medium" !default;
@@ -26,24 +22,35 @@ $micro_label:             "micro" !default;
 
 /* configuration flags */
 
-$use_zerospacefont:       true !default;         // set to true to remove the white space for the inline-block elements without setting the font-size to 0
-$has_row_gap:             true !default;         // set to true to have horizontal space over and down the elements
-$use_symmetric_gutters:   false !default;        // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
+$use_zerospacefont:       true !default;        // set to true to remove the white space for the inline-block elements without setting the font-size to 0
+$has_row_gap:             true !default;        // set to true to have horizontal space over and down the elements
+$use_symmetric_gutters:   false !default;       // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
 
 $define_sizes:            true !default;        // set to true at leas one of the columns variables
-$define_12_columns:       true !default;
-$define_10_columns:       true !default;
-$define_golden_columns:   true !default;
+$define_12_columns:       true !default;        // create the classes for using 12 columns
+$define_10_columns:       true !default;        // create the classes for using 10 columns
+$define_golden_columns:   true !default;        // create the classes for using golden ratio columns (3+5, 3+8 and 5+8)
 
-$define_sizes_min:        true !default;
-$define_micro_size:       true !default;
+$define_sizes_min:        true !default;        // create the classes to manage the --min version
+$define_micro_size:       true !default;        // create the classes for the micro size
 
-$define_push:             true !default;
-$expand_push:             true !default;
+$define_push:             true !default;        // create the push general classes
+$expand_push:             true !default;        // create the push classes per single responsive size
+$push_direction:          "left" !default;      // set to "left" for left-to-right languages, set to "right" for right-to-left languages
 
-$define_pull:             true !default;
-$expand_pull:             true !default;
+$define_pull:             true !default;        // create the pull general classes
+$expand_pull:             true !default;        // create the pull classes per single responsive size
+$pull_direction:          "right" !default;     // set to "right" for left-to-right languages, set to "left" for right-to-left languages
 
+/* auto generated variables */
+
+$font-size:               get-rem($font-size_px) !default;
+
+$gutter_width_px:         $gutter_width_px_value * 1px !default; // for retro-compatibility issue
+$gutter_width:            get-rem($gutter_width_px) !default;
+
+$gap_between_rows_px:     $line-height * $font-size_px * 1px;
+$gap_between_rows:        $line-height * 1rem;
 
 /* set $use_zerospacefont to true to use Zero-Space Font for removing white space between inline-block elements */
 // TODO: manage the inclusion of the font at runtime with @support rule

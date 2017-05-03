@@ -30,8 +30,7 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'css/screen.css',
-        dest: 'css/screen.css'
+        src: 'css/*.css'
       }
     }
   });
