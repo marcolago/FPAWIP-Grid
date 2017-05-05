@@ -194,10 +194,10 @@ $gap_between_rows:        $line-height * 1rem;
 }
 
 .grid.reversed {
-  direction: rtl;
+  direction: rtl; // change the direction according to the target language
 
   & .grid__item {
-    direction: ltr;
+    direction: ltr; // change the direction according to the target language
   }
 }
 

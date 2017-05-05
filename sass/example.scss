@@ -23,9 +23,9 @@ $c_palette_5:  #62206a;
 
 $c_palette_1:  #c0d7f7;
 $c_palette_1b: #17579f;
-$c_palette_2:  #dfafdf;
-$c_palette_3:  #c768c6;
-$c_palette_4:  #971e9f;
+$c_palette_2:  #dfafdf; // .grid
+$c_palette_3:  #c768c6; // .grid__item
+$c_palette_4:  #971e9f; // .grid__box
 $c_palette_5:  #680177;
 
 html, body {
@@ -34,6 +34,10 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  padding-bottom: 5em;
 }
 
 *,
@@ -119,8 +123,8 @@ h3 {
   margin-left: 0;
 }
 
-.grid {
-  margin-top: 0.5em;
+.grid + .grid {
+  margin-top: 1em;
 }
 
 .grid__item {
@@ -146,6 +150,7 @@ h3 {
     width: 0;
     position: absolute;
     top: 0;
+    left: 0;
     bottom: 0;
     z-index: 10;
     border-left: 1px dashed rgba($c_palette_1b, 0.75);
@@ -163,6 +168,7 @@ h3 {
   }
 
   &:after {
+    left: auto;
     right: 0;
   }
 }
@@ -170,4 +176,61 @@ h3 {
 .wrapper h3 {
   text-align: center;
   padding: 0 2rem;
+}
+
+/*
+      ##  ######
+      ## ##    ##
+      ## ##
+      ##  ######
+##    ##       ##
+##    ## ##    ##
+ ######   ######
+*/
+
+.togglers-panel {
+  text-align: right;
+  padding: 0.5em 1em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 15px 10px 15px rgba(black, 0.2);
+  border-top: 2px solid $c_palette_1b;
+}
+
+button {
+  line-height: 2.5;
+}
+
+.boxes-hidden {
+  
+  .legend--grid,
+  .grid,
+  .legend--grid__item,
+  .grid__item,
+  .legend--grid__box {
+    color: $c_palette_1b;
+    text-shadow: none;
+    background-color: transparent;
+    outline-color: $c_palette_1b;
+  }
+
+  .legend--grid__box {
+    background-color: rgba($c_palette_1, 0.5);
+  }
+
+  .grid__box {
+    background-color: rgba($c_palette_1, 0.5);
+    outline: none;
+  }
+
+  .grid,
+  .grid__item,
+  .grid__box {
+    outline: none; 
+  }
+
 }

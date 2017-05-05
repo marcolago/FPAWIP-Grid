@@ -303,5 +303,18 @@
     </div>
   </div>
 
+  <div class="togglers-panel">
+    <button class="js-toggle-boxes">Toggle Element Colors</button>
+  </div>
+  
+  <script>
+    var toggleBoxesButton = document.querySelector(".js-toggle-boxes");
+    toggleBoxesButton.addEventListener("click", onToggleBoxesButton);
+
+    function onToggleBoxesButton(e) {
+      document.body.classList.toggle("boxes-hidden");
+    }
+  </script>
+
 </body>
 </html>
