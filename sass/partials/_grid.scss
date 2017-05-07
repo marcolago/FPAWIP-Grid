@@ -27,8 +27,8 @@ $has_row_gap:             true !default;        // set to true to have horizonta
 $use_symmetric_gutters:   false !default;       // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
 
 $define_sizes:            true !default;        // set to true at leas one of the columns variables
-$define_12_columns:       true !default;        // create the classes for using 12 columns
-$define_10_columns:       true !default;        // create the classes for using 10 columns
+$define_12_columns:       true !default;        // create the classes for using 12 columns and also 6, 4 and 3 columns
+$define_10_columns:       true !default;        // create the classes for using 10 columns and 5 columns
 $define_golden_columns:   true !default;        // create the classes for using golden ratio columns (3+5, 3+8 and 5+8)
 
 $define_sizes_min:        true !default;        // create the classes to manage the --min version
@@ -325,6 +325,7 @@ $gap_between_rows:        $line-height * 1rem;
     }
 
     .#{$size_class}--8-12,
+    .#{$size_class}--4-6,
     .#{$size_class}--2-3 {
       width: get-percent(8,12);
     }
@@ -509,6 +510,7 @@ $gap_between_rows:        $line-height * 1rem;
   }
 
   .#{$size_class}--8-12--min,
+  .#{$size_class}--4-6--min,
   .#{$size_class}--2-3--min {
     min-width: get-percent(8,12);
     flex-basis: get-percent(8,12);
@@ -774,6 +776,7 @@ $gap_between_rows:        $line-height * 1rem;
     }
 
     .push--8-12,
+    .push--4-6,
     .push--2-3 {
       left: get-percent(8,12);
     }
@@ -930,6 +933,7 @@ $gap_between_rows:        $line-height * 1rem;
     }
 
     .push-#{$size_class}--8-12,
+    .push-#{$size_class}--4-6,
     .push-#{$size_class}--2-3 {
       left: get-percent(8,12);
     }
@@ -1125,6 +1129,7 @@ $gap_between_rows:        $line-height * 1rem;
     }
 
     .pull--8-12,
+    .pull--4-6,
     .pull--2-3 {
       right: get-percent(8,12);
     }
@@ -1283,6 +1288,7 @@ $gap_between_rows:        $line-height * 1rem;
     }
 
     .pull-#{$size_class}--8-12,
+    .pull-#{$size_class}--4-6,
     .pull-#{$size_class}--2-3 {
       right: get-percent(8,12);
     }
