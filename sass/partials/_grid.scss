@@ -9,9 +9,7 @@ $f_body_stack:            sans-serif !default;
 $use_font-size-0:         false !default;
 
 $font-size_px:            16 !default;
-
 $line-height:             1.68 !default;
-
 $gutter_width_px_value:   22 !default;
 
 $large_label:             "large" !default;
@@ -25,6 +23,8 @@ $micro_label:             "micro" !default;
 $use_zerospacefont:       true !default;        // set to true to remove the white space for the inline-block elements without setting the font-size to 0
 $has_row_gap:             true !default;        // set to true to have horizontal space over and down the elements
 $use_symmetric_gutters:   false !default;       // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
+
+$equal_heights:           true !default;        // set to true to have every grid__item of the same height in a row (could have undesired side effects on collapsed rows, set the grid__item element to display: inline-block to override, or use the .auto-heights utility class)
 
 $define_sizes:            true !default;        // set to true at leas one of the columns variables
 $define_12_columns:       true !default;        // create the classes for using 12 columns and also 6, 4 and 3 columns
@@ -224,7 +224,11 @@ $gap_between_rows:        $line-height * 1rem;
 
   vertical-align: top;
   position: relative;
-  display: flex;
+
+  @if ($equal_heights == true) {
+    display: flex;
+  }
+
   flex-wrap: wrap;
   flex-grow: 0;
   flex-shrink: 1;
@@ -263,6 +267,18 @@ $gap_between_rows:        $line-height * 1rem;
 
   .rowgap > & {
     margin-top: $gap_between_rows; // force the row gap even if the grid is rowgapless
+  }
+
+  .equal-heights > & {
+    display: flex;
+  }
+
+  .auto-heights > & {
+    display: inline-block;
+  }
+
+  &.auto-height {
+    display: inline-block;
   }
 }
 
