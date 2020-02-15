@@ -20,27 +20,31 @@ $micro_label:             "micro" !default;
 
 /* configuration flags */
 
-$use_zerospacefont:       true !default;        // set to true to remove the white space for the inline-block elements without setting the font-size to 0
-$has_row_gap:             true !default;        // set to true to have horizontal space over and down the elements
-$use_symmetric_gutters:   false !default;       // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
+$use_zerospacefont:         false   !default;        // set to true to remove the white space for the inline-block elements without setting the font-size to 0
+$has_row_gap:               true    !default;        // set to true to have horizontal space over and down the elements
+$use_symmetric_gutters:     false   !default;        // it works fine but can cause horizontal scrolling if the .grid wrapper is 100% viewport wide
 
-$equal_heights:           true !default;        // set to true to have every grid__item of the same height in a row (could have undesired side effects on collapsed rows, set the grid__item element to display: inline-block to override, or use the .auto-heights utility class)
+$equal_heights:             true    !default;        // set to true to have every grid__item of the same height in a row (could have undesired side effects on collapsed rows, set the grid__item element to display: inline-block to override, or use the .auto-heights utility class)
 
-$define_sizes:            true !default;        // set to true at leas one of the columns variables
-$define_12_columns:       true !default;        // create the classes for using 12 columns and also 6, 4 and 3 columns
-$define_10_columns:       true !default;        // create the classes for using 10 columns and 5 columns
-$define_golden_columns:   true !default;        // create the classes for using golden ratio columns (3+5, 3+8 and 5+8)
+$ie8-compatibility:         false   !default;        // set to true to print classes for Internet Explorer 8 Compatibility 
 
-$define_sizes_min:        true !default;        // create the classes to manage the --min version
-$define_micro_size:       true !default;        // create the classes for the micro size
+$define_sizes:              true    !default;        // set to true at least one of the columns variables
+$define_12_columns:         true    !default;        // create the classes for using 12 columns and also 6, 4 and 3 columns
+$define_10_columns:         false   !default;        // create the classes for using 10 columns and 5 columns
+$define_4_columns:          false   !default;        // create the classes for using 4 columns and 2 columns
+$define_3_columns:          false   !default;        // create the classes for using 3 columns and 2 columns
+$define_golden_columns:     false   !default;        // create the classes for using golden ratio columns (3+5, 3+8 and 5+8)
 
-$define_push:             true !default;        // create the push general classes
-$expand_push:             true !default;        // create the push classes per single responsive size
-$push_direction:          "left" !default;      // set to "left" for left-to-right languages, set to "right" for right-to-left languages
+$define_sizes_min:          false   !default;        // create the classes to manage the --min version
+$define_micro_size:         false   !default;        // create the classes for the micro size
 
-$define_pull:             true !default;        // create the pull general classes
-$expand_pull:             true !default;        // create the pull classes per single responsive size
-$pull_direction:          "right" !default;     // set to "right" for left-to-right languages, set to "left" for right-to-left languages
+$define_push:               false   !default;        // create the push general classes
+$expand_push:               false   !default;        // create the push classes per single responsive size
+$push_direction:            "left"  !default;        // set to "left" for left-to-right languages, set to "right" for right-to-left languages
+
+$define_pull:               false   !default;        // create the pull general classes
+$expand_pull:               false   !default;        // create the pull classes per single responsive size
+$pull_direction:            "right" !default;        // set to "right" for left-to-right languages, set to "left" for right-to-left languages
 
 /* auto generated variables */
 
@@ -114,7 +118,9 @@ $gap_between_rows:        $line-height * 1rem;
   // remember to not set left and right padding on .grid parent
   // if you want to be sure use .grid-wrapper class on .grid parent
   // but pay attention to the !important override
-  @extend .zsf-parent;
+  @if ($use_zerospacefont == true) {
+    @extend .zsf-parent;
+  }
 
   @if ($has_row_gap == true) {
     padding-bottom: $gap_between_rows_px; // Used padding to allow background symmetry
@@ -202,7 +208,9 @@ $gap_between_rows:        $line-height * 1rem;
 }
 
 .grid__item {
-  @extend .zsf-child;
+  @if ($use_zerospacefont == true) {
+    @extend .zsf-child;
+  }
   text-align: left;
   width: 100%;
 
@@ -302,7 +310,7 @@ $gap_between_rows:        $line-height * 1rem;
 @mixin sizes($size_class) {
 
   // twelves
-  
+
   @if ($define_12_columns == true) {
 
     .#{$size_class}--1-12 {
@@ -412,6 +420,39 @@ $gap_between_rows:        $line-height * 1rem;
 
   }
 
+  // fourth
+
+  @if ($define_4_columns == true) {
+
+    .#{$size_class}--1-4 {
+      width: get-percent(1,4);
+    }
+
+    .#{$size_class}--2-4,
+    .#{$size_class}--1-2 {
+      width: get-percent(2,4);
+    }
+
+    .#{$size_class}--3-4 {
+      width: get-percent(3,4);
+    }
+    
+  }
+
+  // third
+
+  @if ($define_3_columns == true) {
+
+    .#{$size_class}--1-3 {
+      width: get-percent(1,3);
+    }
+
+    .#{$size_class}--2-3 {
+      width: get-percent(2,3);
+    }
+    
+  }
+
   // golden ratio
 
   @if ($define_golden_columns == true) {
@@ -476,203 +517,256 @@ $gap_between_rows:        $line-height * 1rem;
 
   // twelves
 
-  .#{$size_class}--1-12--min {
-    min-width: get-percent(1,12);
-    flex-basis: get-percent(1,12);
-    flex-grow: 1;
-  }
+  @if ($define_12_columns == true) {
 
-  .#{$size_class}--2-12--min,
-  .#{$size_class}--1-6--min {
-    min-width: get-percent(2,12);
-    flex-basis: get-percent(2,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--1-12--min {
+      min-width: get-percent(1,12);
+      flex-basis: get-percent(1,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--3-12--min,
-  .#{$size_class}--1-4--min {
-    min-width: get-percent(3,12);
-    flex-basis: get-percent(3,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--2-12--min,
+    .#{$size_class}--1-6--min {
+      min-width: get-percent(2,12);
+      flex-basis: get-percent(2,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--4-12--min,
-  .#{$size_class}--2-6--min,
-  .#{$size_class}--1-3--min {
-    min-width: get-percent(4,12);
-    flex-basis: get-percent(4,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--3-12--min,
+    .#{$size_class}--1-4--min {
+      min-width: get-percent(3,12);
+      flex-basis: get-percent(3,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--5-12--min {
-    min-width: get-percent(5,12);
-    flex-basis: get-percent(5,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--4-12--min,
+    .#{$size_class}--2-6--min,
+    .#{$size_class}--1-3--min {
+      min-width: get-percent(4,12);
+      flex-basis: get-percent(4,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--6-12--min,
-  .#{$size_class}--3-6--min,
-  .#{$size_class}--2-4--min,
-  .#{$size_class}--1-2--min {
-    min-width: get-percent(6,12);
-    flex-basis: get-percent(6,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--5-12--min {
+      min-width: get-percent(5,12);
+      flex-basis: get-percent(5,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--7-12--min {
-    min-width: get-percent(7,12);
-    flex-basis: get-percent(7,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--6-12--min,
+    .#{$size_class}--3-6--min,
+    .#{$size_class}--2-4--min,
+    .#{$size_class}--1-2--min {
+      min-width: get-percent(6,12);
+      flex-basis: get-percent(6,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--8-12--min,
-  .#{$size_class}--4-6--min,
-  .#{$size_class}--2-3--min {
-    min-width: get-percent(8,12);
-    flex-basis: get-percent(8,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--7-12--min {
+      min-width: get-percent(7,12);
+      flex-basis: get-percent(7,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--9-12--min,
-  .#{$size_class}--3-4--min {
-    min-width: get-percent(9,12);
-    flex-basis: get-percent(9,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--8-12--min,
+    .#{$size_class}--4-6--min,
+    .#{$size_class}--2-3--min {
+      min-width: get-percent(8,12);
+      flex-basis: get-percent(8,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--10-12--min,
-  .#{$size_class}--5-6--min {
-    min-width: get-percent(10,12);
-    flex-basis: get-percent(10,12);
-    flex-grow: 1;
-  }
+    .#{$size_class}--9-12--min,
+    .#{$size_class}--3-4--min {
+      min-width: get-percent(9,12);
+      flex-basis: get-percent(9,12);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--11-12--min {
-    min-width: get-percent(11,12);
-    flex-basis: get-percent(11,12);
-    flex-grow: 1;
+    .#{$size_class}--10-12--min,
+    .#{$size_class}--5-6--min {
+      min-width: get-percent(10,12);
+      flex-basis: get-percent(10,12);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--11-12--min {
+      min-width: get-percent(11,12);
+      flex-basis: get-percent(11,12);
+      flex-grow: 1;
+    }
+
   }
 
   // tenth
 
-  .#{$size_class}--1-10 {
-    min-width: get-percent(1,10);
-    flex-basis: get-percent(1,10);
-    flex-grow: 1;
+  @if ($define_10_columns == true) {
+
+    .#{$size_class}--1-10--min {
+      min-width: get-percent(1,10);
+      flex-basis: get-percent(1,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--2-10--min,
+    .#{$size_class}--1-5--min {
+      min-width: get-percent(2,10);
+      flex-basis: get-percent(2,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--3-10--min {
+      min-width: get-percent(3,10);
+      flex-basis: get-percent(3,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--4-10--min, 
+    .#{$size_class}--2-5--min {
+      min-width: get-percent(4,10);
+      flex-basis: get-percent(4,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--5-10--min {
+      min-width: get-percent(5,10);
+      flex-basis: get-percent(5,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--6-10--min,
+    .#{$size_class}--3-5--min {
+      min-width: get-percent(6,10);
+      flex-basis: get-percent(6,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--7-10--min {
+      min-width: get-percent(7,10);
+      flex-basis: get-percent(7,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--8-10--min,
+    .#{$size_class}--4-5--min {
+      min-width: get-percent(8,10);
+      flex-basis: get-percent(8,10);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--9-10--min {
+      min-width: get-percent(9,10);
+      flex-basis: get-percent(9,10);
+      flex-grow: 1;
+    }
+
   }
 
-  .#{$size_class}--2-10,
-  .#{$size_class}--1-5 {
-    min-width: get-percent(2,10);
-    flex-basis: get-percent(2,10);
-    flex-grow: 1;
+  // fourth
+
+  @if ($define_4_columns == true) {
+    .#{$size_class}--1-4--min {
+      min-width: get-percent(1,4);
+      flex-basis: get-percent(1,4);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--2-4--min,
+    .#{$size_class}--1-2--min {
+      min-width: get-percent(2,4);
+      flex-basis: get-percent(2,4);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--3-4--min {
+      min-width: get-percent(3,4);
+      flex-basis: get-percent(3,4);
+      flex-grow: 1;
+    }
+    
   }
 
-  .#{$size_class}--3-10 {
-    min-width: get-percent(3,10);
-    flex-basis: get-percent(3,10);
-    flex-grow: 1;
-  }
+  // third
 
-  .#{$size_class}--4-10, 
-  .#{$size_class}--2-5 {
-    min-width: get-percent(4,10);
-    flex-basis: get-percent(4,10);
-    flex-grow: 1;
-  }
+  @if ($define_3_columns == true) {
+    .#{$size_class}--1-3--min {
+      min-width: get-percent(1,3);
+      flex-basis: get-percent(1,3);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--5-10 {
-    min-width: get-percent(5,10);
-    flex-basis: get-percent(5,10);
-    flex-grow: 1;
-  }
-
-  .#{$size_class}--6-10,
-  .#{$size_class}--3-5 {
-    min-width: get-percent(6,10);
-    flex-basis: get-percent(6,10);
-    flex-grow: 1;
-  }
-
-  .#{$size_class}--7-10 {
-    min-width: get-percent(7,10);
-    flex-basis: get-percent(7,10);
-    flex-grow: 1;
-  }
-
-  .#{$size_class}--8-10,
-  .#{$size_class}--4-5 {
-    min-width: get-percent(8,10);
-    flex-basis: get-percent(8,10);
-    flex-grow: 1;
-  }
-
-  .#{$size_class}--9-10 {
-    min-width: get-percent(9,10);
-    flex-basis: get-percent(9,10);
-    flex-grow: 1;
+    .#{$size_class}--2-3--min {
+      min-width: get-percent(2,3);
+      flex-basis: get-percent(2,3);
+      flex-grow: 1;
+    }
+    
   }
 
   // golden ratio
 
-  // eights
+  @if ($define_golden_columns == true) {
 
-  .#{$size_class}--3-8--min {
-    min-width: get-percent(3,8);
-    flex-basis: get-percent(3,8);
-    flex-grow: 1;
-  }
+    // eights
 
-  .#{$size_class}--5-8--min {
-    min-width: get-percent(5,8);
-    flex-basis: get-percent(5,8);
-    flex-grow: 1;
-  }
+    .#{$size_class}--3-8--min {
+      min-width: get-percent(3,8);
+      flex-basis: get-percent(3,8);
+      flex-grow: 1;
+    }
 
-  // elevenths
+    .#{$size_class}--5-8--min {
+      min-width: get-percent(5,8);
+      flex-basis: get-percent(5,8);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--3-11--min {
-    min-width: get-percent(3,11);
-    flex-basis: get-percent(3,11);
-    flex-grow: 1;
-  }
+    // elevenths
 
-  .#{$size_class}--5-11--min {
-    min-width: get-percent(5,11);
-    flex-basis: get-percent(5,11);
-    flex-grow: 1;
-  }
+    .#{$size_class}--3-11--min {
+      min-width: get-percent(3,11);
+      flex-basis: get-percent(3,11);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--8-11--min {
-    min-width: get-percent(8,11);
-    flex-basis: get-percent(8,11);
-    flex-grow: 1;
-  }
+    .#{$size_class}--5-11--min {
+      min-width: get-percent(5,11);
+      flex-basis: get-percent(5,11);
+      flex-grow: 1;
+    }
 
-  // thirteenths
+    .#{$size_class}--8-11--min {
+      min-width: get-percent(8,11);
+      flex-basis: get-percent(8,11);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--3-13--min {
-    min-width: get-percent(3,13);
-    flex-basis: get-percent(3,13);
-    flex-grow: 1;
-  }
+    // thirteenths
 
-  .#{$size_class}--5-13--min {
-    min-width: get-percent(5,13);
-    flex-basis: get-percent(5,13);
-    flex-grow: 1;
-  }
+    .#{$size_class}--3-13--min {
+      min-width: get-percent(3,13);
+      flex-basis: get-percent(3,13);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--8-13--min {
-    min-width: get-percent(8,13);
-    flex-basis: get-percent(8,13);
-    flex-grow: 1;
-  }
+    .#{$size_class}--5-13--min {
+      min-width: get-percent(5,13);
+      flex-basis: get-percent(5,13);
+      flex-grow: 1;
+    }
 
-  .#{$size_class}--11-13--min {
-    min-width: get-percent(11,13);
-    flex-basis: get-percent(11,13);
-    flex-grow: 1;
+    .#{$size_class}--8-13--min {
+      min-width: get-percent(8,13);
+      flex-basis: get-percent(8,13);
+      flex-grow: 1;
+    }
+
+    .#{$size_class}--11-13--min {
+      min-width: get-percent(11,13);
+      flex-basis: get-percent(11,13);
+      flex-grow: 1;
+    }
+    
   }
 
 }
@@ -687,15 +781,19 @@ $gap_between_rows:        $line-height * 1rem;
  ######  #### ######## ########  ######
 */
 
-.no-opacity,
-.lte-ie-8 {
-  @if ($define_sizes == true) {
-    @include sizes($large_label);
-  }
-  @if ($define_sizes_min == true) {
-    @include sizes-min($large_label);
-  }
+@if ($ie8-compatibility == true) {
+  .no-opacity,
+  .lte-ie-8 {
+    @if ($define_sizes == true) {
+      @include sizes($large_label);
+    }
+    @if ($define_sizes_min == true) {
+      @include sizes-min($large_label);
+    }
+  }  
 }
+
+
 
 @media screen and ($mq_large_min) {
   @if ($define_sizes == true) {
@@ -1443,7 +1541,7 @@ $gap_between_rows:        $line-height * 1rem;
     @include pull-sizes("small");
   }
 
-  @if ($define_micro_size == true) {
+  @if ($define_micro_size == true) {
     @media screen and ($mq_micro_max) {
       @include pull-sizes("micro");
     }
